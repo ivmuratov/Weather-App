@@ -1,0 +1,16 @@
+export type WeatherCondition =
+  | 'Clear'
+  | 'Clouds'
+  | 'Drizzle'
+  | 'Rain'
+  | 'Thunderstorm'
+  | 'Snow'
+  | 'Mist'
+  | 'Smoke'
+  | 'Haze'
+  | 'Dust'
+  | 'Fog'
+  | 'Sand'
+  | 'Ash'
+  | 'Squall'
+  | 'Tornado';
