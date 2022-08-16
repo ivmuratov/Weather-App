@@ -3,7 +3,6 @@ import { FC } from 'react';
 
 import {
   CurrentForecast,
-  FeelsLike,
   Label,
   StyledCurrentWeather,
   Temp,
@@ -18,7 +17,7 @@ import {
   useGetCurrentAirPolutionQuery,
   useGetCurrentWeatherQuery,
 } from '../../services/WeatherService';
-import { airNames, weatherConditionsImgs } from '../../utils/utils';
+import { airNames, weatherConditions } from '../../utils/utils';
 import { FlexContainer } from '../UI/FlexContainer.styled';
 import { ImgContainer } from '../UI/ImgContainer.styled';
 
@@ -32,13 +31,14 @@ const CurrentWeather: FC = () => {
   return (
     <StyledCurrentWeather>
       <CurrentForecast>
-        <ImgContainer size='100px' src={weatherConditionsImgs(weather?.clouds.all ?? 0)} />
+        <ImgContainer size='100px' src={weatherConditions(weather?.weather[0].main, weather?.clouds.all)} />
         <FlexContainer direction='column'>
           <Temp>
             {weather?.main.temp.toFixed()}
             <span>°</span>
           </Temp>
-          <FeelsLike>Ощущается как {weather?.main.feels_like.toFixed()}°</FeelsLike>
+          <p>{weather?.weather[0].description}</p>
+          <p>Ощущается как {weather?.main.feels_like.toFixed()}°</p>
         </FlexContainer>
       </CurrentForecast>
       <WeatherDetails>
