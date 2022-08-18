@@ -16,7 +16,7 @@ import {
   useGetCoordQuery,
   useGetCurrentAirPolutionQuery,
   useGetCurrentWeatherQuery,
-} from '../../services/WeatherService';
+} from '../../services/weatherService';
 import { airNames, weatherConditions } from '../../utils/utils';
 import { FlexContainer } from '../UI/FlexContainer.styled';
 import { ImgContainer } from '../UI/ImgContainer.styled';

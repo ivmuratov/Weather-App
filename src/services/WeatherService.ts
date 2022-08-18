@@ -53,3 +53,4 @@ export const weatherApi = createApi({
 });
 
 export const { useGetCoordQuery, useGetCurrentWeatherQuery, useGetCurrentAirPolutionQuery } = weatherApi;
+export default weatherApi.reducer;
