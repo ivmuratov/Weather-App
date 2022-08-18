@@ -33,6 +33,13 @@ export const WeatherDetails = styled(FlexContainer)`
 
 export const WeatherDetail = styled(FlexContainer)`
   justify-content: space-between;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid;
+
+  :last-child {
+    border: none;
+    padding: 0;
+  }
 `;
 
 export const Label = styled.span`

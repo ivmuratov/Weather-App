@@ -1,26 +1,41 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+
+import { Provider } from 'react-redux';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
 
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Main from './components/Main';
+import { store } from './store/store';
+import { Wrapper } from './styles/global';
+import { GlobalStyles } from './styles/global';
+import { ResetStyles } from './styles/reset';
+import { darkTheme, lightTheme } from './styles/theme';
 
-const Wrapper = styled.div`
-  max-width: 900px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding: 0 15px;
-  margin: 0 auto;
-`;
-
+//TODO: поработать с redux (тема должна переключаться из header)
 const App = () => {
+  const [theme, setTheme] = useState<DefaultTheme>(lightTheme);
+
   return (
-    <Wrapper>
-      <Header />
-      <Main />
-      <Footer />
-    </Wrapper>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Wrapper>
+          <ResetStyles />
+          <GlobalStyles />
+
+          <button
+            onClick={() => {
+              setTheme(theme === lightTheme ? darkTheme : lightTheme);
+            }}
+          >
+            tuggle theme
+          </button>
+          <Header />
+          <Main />
+          <Footer />
+        </Wrapper>
+      </ThemeProvider>
+    </Provider>
   );
 };
 

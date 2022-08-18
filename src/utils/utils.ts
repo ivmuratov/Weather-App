@@ -19,7 +19,7 @@ export const airNames = new Map<AirQualitativeName, string>([
   [AirQualitativeName.VeryPoor, 'Очень плохое'],
 ]);
 
-//TODO: 2. не забыть добавить ночную тему (сделать в figma луну)
+//TODO: 2. сделать в figma луну
 export const cloudsConditions = (cloudPercent: number): string => {
   if (cloudPercent >= 0 && cloudPercent < 11) {
     return sunny;

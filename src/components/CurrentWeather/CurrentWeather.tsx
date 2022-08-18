@@ -38,7 +38,7 @@ const CurrentWeather: FC = () => {
             <span>°</span>
           </Temp>
           <p>{weather?.weather[0].description}</p>
-          <p>Ощущается как {weather?.main.feels_like.toFixed()}°</p>
+          <p>ощущается как {weather?.main.feels_like.toFixed()}°</p>
         </FlexContainer>
       </CurrentForecast>
       <WeatherDetails>

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import CurrentWeather from './CurrentWeather/CurrentWeather';
 
+import { Container } from '../styles/global';
+
 const MainStyled = styled.main`
   flex: 1 0 auto;
 `;
@@ -10,7 +12,9 @@ const MainStyled = styled.main`
 const Main: FC = () => {
   return (
     <MainStyled>
-      <CurrentWeather />
+      <Container>
+        <CurrentWeather />
+      </Container>
     </MainStyled>
   );
 };
