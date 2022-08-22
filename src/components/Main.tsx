@@ -6,6 +6,7 @@ import CurrentWeather from './CurrentWeather/CurrentWeather';
 import { Container } from '../styles/global';
 
 const MainStyled = styled.main`
+  margin: 0 0 0 0;
   flex: 1 0 auto;
 `;
 

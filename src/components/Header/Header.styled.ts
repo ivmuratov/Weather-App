@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
-  display: flex;
-  justify-content: flex-end;
-  min-height: 25px;
+  padding: 20px 0 20px 0;
 `;

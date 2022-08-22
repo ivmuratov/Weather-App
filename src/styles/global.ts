@@ -5,13 +5,13 @@ import { Indent, MaxWidth } from './vars';
 export const GlobalStyles = createGlobalStyle`
 html,
 body {
-  height: 100%; 
+  height: 100%;
 }
 
 body {
   font-family: 'Urbanist', sans-serif;
-	font-weight: 400;
-  transition: all 1.5s;
+	font-weight: 600;
+  transition: all 0.5s;
   background: ${(props) => props.theme.background};
   color: ${(props) => props.theme.color}
 }

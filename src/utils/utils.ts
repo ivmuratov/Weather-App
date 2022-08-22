@@ -1,3 +1,5 @@
+import { currentDateUnix, isDay } from './date';
+
 import { AirQualitativeName } from '../constants/enums';
 import atmosphere from '../imgs/atmosphere/atmosphere.svg';
 import clearCloudy from '../imgs/clouds/clear-cloudy.svg';
@@ -9,7 +11,7 @@ import drizzle from '../imgs/drizzle/drizzle.svg';
 import rain from '../imgs/rain/rain.svg';
 import snow from '../imgs/snow/snow.svg';
 import thunderstorm from '../imgs/thunderstorm/thunderstorm.svg';
-import { WeatherCondition } from '../types/WeatherCondition';
+import { CurrentWeatherResp } from '../types/CurrentWeatherResp';
 
 export const airNames = new Map<AirQualitativeName, string>([
   [AirQualitativeName.Good, 'Отличное'],
@@ -34,17 +36,19 @@ export const cloudsConditions = (cloudPercent: number): string => {
   }
 };
 
-export const weatherConditions = (
-  condition: WeatherCondition | undefined,
-  cloudPercent: number | undefined,
-): string | undefined => {
-  if (typeof condition === 'undefined' || typeof cloudPercent === 'undefined') {
+export const weatherConditions = (weatherResp: CurrentWeatherResp | undefined): string | undefined => {
+  if (typeof weatherResp === 'undefined') {
     return;
   }
+  const {
+    weather: [{ main: condition }],
+    clouds: { all: cloudPercent },
+    sys: { sunrise, sunset },
+  } = weatherResp;
+  /* console.log(`рассвет - ${sunrise}`);
+  console.log(`текущее время - ${currentDateUnix()} день - ${isDay(sunrise, sunset)}`);
+  console.log(`закат - ${sunset}`); */
   switch (condition) {
-    case 'Clear':
-    case 'Clouds':
-      return cloudsConditions(cloudPercent);
     case 'Rain':
       return rain;
     case 'Drizzle':
@@ -63,6 +67,8 @@ export const weatherConditions = (
     case 'Squall':
     case 'Tornado':
       return atmosphere;
+    case 'Clear':
+    case 'Clouds':
     default:
       return cloudsConditions(cloudPercent);
   }

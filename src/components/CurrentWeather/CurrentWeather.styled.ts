@@ -1,19 +1,26 @@
 import styled from 'styled-components';
 
-import { FlexContainer } from '../UI/FlexContainer.styled';
+import { BreakPoint } from '../../styles/vars';
 
-export const StyledCurrentWeather = styled.section`
-  margin: 50px 0 0 0;
-  display: flex;
-  flex-wrap: wrap;
+import { FlexContainer } from '../UI/FlexContainer';
+
+export const StyledCurrentWeather = styled.section``;
+
+export const CurrentWeatherContent = styled(FlexContainer)`
   justify-content: space-between;
+
+  @media (max-width: ${BreakPoint.md2}) {
+    align-items: center;
+    flex-flow: column wrap;
+  }
 `;
 
 export const CurrentForecast = styled(FlexContainer)`
+  flex-flow: column wrap;
   margin: 0 10px 0 0;
 
-  p {
-    font-weight: 700;
+  @media (max-width: ${BreakPoint.md2}) {
+    margin: 0 0 20px 0;
   }
 `;
 
@@ -25,28 +32,28 @@ export const Temp = styled.h1`
     font-weight: 400;
   }
 `;
+
 export const WeatherDetails = styled(FlexContainer)`
   flex-direction: column;
-  flex: 0 1 240px;
+  flex: 0 1 auto;
   justify-content: space-between;
+
+  @media (max-width: ${BreakPoint.md2}) {
+    display: none;
+  }
 `;
 
 export const WeatherDetail = styled(FlexContainer)`
   justify-content: space-between;
   padding: 0 0 10px 0;
-  border-bottom: 1px solid;
 
-  :last-child {
-    border: none;
+  &:last-child {
     padding: 0;
   }
 `;
 
 export const Label = styled.span`
-  font-weight: 700;
-  margin: 0 5px 0 0;
+  margin: 0 10px 0 0;
 `;
 
-export const Value = styled.span`
-  font-weight: 700;
-`;
+export const Value = styled.span``;

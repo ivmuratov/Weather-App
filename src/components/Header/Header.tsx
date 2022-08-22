@@ -6,6 +6,8 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { themeSlice } from '../../store/reducers/themeSlice';
 import { Container } from '../../styles/global';
 import { lightTheme } from '../../styles/theme';
+import { FlexContainer } from '../UI/FlexContainer';
+import ToggleSwitch from '../UI/ToggleSwitch';
 
 const Header: FC = () => {
   const { theme } = useAppSelector((state) => state.themeReducer);
@@ -15,13 +17,13 @@ const Header: FC = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <Container>
-      <StyledHeader>
-        <button onClick={() => dispatch(theme === lightTheme ? toggleOnDark(true) : toggleOnDark(false))}>
-          Toggle
-        </button>
-      </StyledHeader>
-    </Container>
+    <StyledHeader>
+      <Container>
+        <FlexContainer justifyContent='flex-end'>
+          <ToggleSwitch onClick={() => dispatch(theme === lightTheme ? toggleOnDark(true) : toggleOnDark(false))} />
+        </FlexContainer>
+      </Container>
+    </StyledHeader>
   );
 };
 
