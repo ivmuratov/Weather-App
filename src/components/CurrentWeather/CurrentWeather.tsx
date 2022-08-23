@@ -12,14 +12,12 @@ import {
   WeatherDetails,
 } from './CurrentWeather.styled';
 
-import { AirQualitativeName, TimeUnit } from '../../constants/enums';
-import {
-  useGetCoordQuery,
-  useGetCurrentAirPolutionQuery,
-  useGetCurrentWeatherQuery,
-} from '../../services/weatherService';
-import { convertToMs, toDateTime } from '../../utils/date';
-import { airNames, weatherConditions } from '../../utils/utils';
+import { AirQualitativeName } from '../../constants/enums';
+import { useGetCoordQuery, useGetCurrentAirPolutionQuery } from '../../services/openWeatherMapService';
+import { useGetCurrentWeatherQuery } from '../../services/weatherBitService';
+import { airNames } from '../../utils/airPollution';
+import { toDateTime } from '../../utils/date';
+import { weatherConditions } from '../../utils/weather';
 import { FlexContainer } from '../UI/FlexContainer';
 import { ImgContainer } from '../UI/ImgContainer';
 import Title from '../UI/Title';
@@ -29,9 +27,7 @@ const CurrentWeather: FC = () => {
 
   const { data: coord } = useGetCoordQuery('Novosibirsk');
 
-  const { data: weather } = useGetCurrentWeatherQuery(coord ?? skipToken, {
-    pollingInterval: convertToMs(5, TimeUnit.MINUTE),
-  });
+  const { data: weather } = useGetCurrentWeatherQuery(coord ?? skipToken);
 
   const { data: airPollution } = useGetCurrentAirPolutionQuery(coord ?? skipToken);
 
@@ -50,13 +46,13 @@ const CurrentWeather: FC = () => {
           <FlexContainer>
             <ImgContainer size='100px' src={weatherConditions(weather)} />
             <Temp>
-              {weather?.main.temp.toFixed()}
+              {weather?.temp.toFixed()}
               <span>°</span>
             </Temp>
           </FlexContainer>
           <FlexContainer direction='column'>
-            <p>{weather?.weather[0].description}</p>
-            <p>ощущается как {weather?.main.feels_like.toFixed()}°</p>
+            <p>{weather?.weather.description}</p>
+            <p>ощущается как {weather?.app_temp.toFixed()}°</p>
           </FlexContainer>
         </CurrentForecast>
         <WeatherDetails>
@@ -66,15 +62,19 @@ const CurrentWeather: FC = () => {
           </WeatherDetail>
           <WeatherDetail>
             <Label>Давление</Label>
-            <Value>{weather?.main.pressure} мбар</Value>
+            <Value>{weather?.pres.toFixed()} мбар</Value>
+          </WeatherDetail>
+          <WeatherDetail>
+            <Label>Влажность</Label>
+            <Value>{weather?.rh.toFixed()} %</Value>
           </WeatherDetail>
           <WeatherDetail>
             <Label>Ветер</Label>
-            <Value>{weather?.wind.speed} м/с</Value>
+            <Value>{weather?.wind_spd.toFixed()} м/с</Value>
           </WeatherDetail>
           <WeatherDetail>
-            <Label>Порывы ветра</Label>
-            <Value>{weather?.wind.gust ?? '-'} м/с</Value>
+            <Label>Направление</Label>
+            <Value>{weather?.wind_cdir}</Value>
           </WeatherDetail>
         </WeatherDetails>
       </CurrentWeatherContent>

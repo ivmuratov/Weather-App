@@ -17,7 +17,7 @@ export const CurrentWeatherContent = styled(FlexContainer)`
 
 export const CurrentForecast = styled(FlexContainer)`
   flex-flow: column wrap;
-  margin: 0 10px 0 0;
+  margin: 0 30px 0 0;
 
   @media (max-width: ${BreakPoint.md2}) {
     margin: 0 0 20px 0;

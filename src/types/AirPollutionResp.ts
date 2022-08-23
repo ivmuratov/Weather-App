@@ -1,7 +1,7 @@
 import { IAirPollution } from './IAirPollution';
 import { ICoordinates } from './ICoordinates';
 
-export interface CurrentAirPollutionResp {
+export interface AirPollutionResp {
   coord: ICoordinates;
   list: IAirPollution[];
 }

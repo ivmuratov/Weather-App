@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import Footer from './components/Footer';
@@ -9,7 +9,7 @@ import { Wrapper } from './styles/global';
 import { GlobalStyles } from './styles/global';
 import { ResetStyles } from './styles/reset';
 
-const App = () => {
+const App: FC = () => {
   const { theme } = useAppSelector((state) => state.themeReducer);
 
   return (

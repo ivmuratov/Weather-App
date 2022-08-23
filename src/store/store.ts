@@ -2,19 +2,20 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import themeReducer from './reducers/themeSlice';
 
-import weatherApiReducer from '../services/weatherService';
-
-import { weatherApi } from '../services/weatherService';
+import { openWeatherMapApi } from '../services/openWeatherMapService';
+import { weatherBitApi } from '../services/weatherBitService';
 
 const rootReducer = combineReducers({
-  [weatherApi.reducerPath]: weatherApiReducer,
+  [openWeatherMapApi.reducerPath]: openWeatherMapApi.reducer,
+  [weatherBitApi.reducerPath]: weatherBitApi.reducer,
   themeReducer,
 });
 
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(weatherApi.middleware),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(openWeatherMapApi.middleware, weatherBitApi.middleware),
   });
 };
 
