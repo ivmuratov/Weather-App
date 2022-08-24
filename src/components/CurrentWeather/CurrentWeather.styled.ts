@@ -4,7 +4,9 @@ import { BreakPoint } from '../../styles/vars';
 
 import { FlexContainer } from '../UI/FlexContainer';
 
-export const StyledCurrentWeather = styled.section``;
+export const StyledCurrentWeather = styled.section`
+  margin: 0 0 30px 0;
+`;
 
 export const CurrentWeatherContent = styled(FlexContainer)`
   justify-content: space-between;

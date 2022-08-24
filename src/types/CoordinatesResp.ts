@@ -1,6 +1,6 @@
 import { ICoordinates } from './ICoordinates';
 
-type LocalNames = {
+interface LocalNames {
   ru: string;
   ja: string;
   es: string;
@@ -28,7 +28,7 @@ type LocalNames = {
   kn: string;
   lt: string;
   fr: string;
-};
+}
 
 export interface CoordinatesResp extends ICoordinates {
   name: string;

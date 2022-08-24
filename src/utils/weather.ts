@@ -8,10 +8,10 @@ import drizzle from '../imgs/drizzle/drizzle.svg';
 import rain from '../imgs/rain/rain.svg';
 import snow from '../imgs/snow/snow.svg';
 import thunderstorm from '../imgs/thunderstorm/thunderstorm.svg';
-import { IWeather } from '../types/IWeather';
+import { ICurrentWeather } from '../types/ICurrentWeather';
 
 //TODO: 2. сделать в figma луну
-export const weatherConditions = (weather: IWeather | undefined): string | undefined => {
+export const weatherConditions = (weather: ICurrentWeather | undefined): string | undefined => {
   if (typeof weather === 'undefined') {
     return;
   }

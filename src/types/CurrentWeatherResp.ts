@@ -1,6 +1,6 @@
-import { IWeather } from './IWeather';
+import { ICurrentWeather } from './ICurrentWeather';
 
 export interface CurrentWeatherResp {
-  data: IWeather[];
+  data: ICurrentWeather[];
   count: number;
 }
