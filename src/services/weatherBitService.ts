@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { API_KEY2 } from '../constants/api';
 import { CurrentWeatherResp } from '../types/CurrentWeatherResp';
+import { DailyForecastParams } from '../types/DailyForecastParams';
 import { DailyForecastResp } from '../types/DailyForecastResp';
 import { ICoordinates } from '../types/ICoordinates';
 import { ICurrentWeather } from '../types/ICurrentWeather';
@@ -23,12 +24,13 @@ export const weatherBitApi = createApi({
       }),
       transformResponse: (response: CurrentWeatherResp) => response.data[0],
     }),
-    getDailyForecast: build.query<IDailyWeatherItem[], ICoordinates>({
-      query: ({ lat, lon }) => ({
+    getDailyForecast: build.query<IDailyWeatherItem[], DailyForecastParams>({
+      query: ({ lat, lon, days }) => ({
         url: `forecast/daily?&key=${API_KEY2}&lang=ru`,
         params: {
           lat,
           lon,
+          days,
         },
       }),
       transformResponse: (response: DailyForecastResp) => response.data,

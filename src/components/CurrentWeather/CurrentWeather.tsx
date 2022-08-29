@@ -13,6 +13,8 @@ import {
 } from './CurrentWeather.styled';
 
 import { AirQualitativeName } from '../../constants/enums';
+import direction from '../../imgs/icons/direction.svg';
+import { useGetDateTimeQuery } from '../../services/dateTimeService';
 import { useGetCoordQuery, useGetCurrentAirPolutionQuery } from '../../services/openWeatherMapService';
 import { useGetCurrentWeatherQuery } from '../../services/weatherBitService';
 import { airNames } from '../../utils/airPollution';
@@ -31,6 +33,8 @@ const CurrentWeather: FC = () => {
 
   const { data: airPollution } = useGetCurrentAirPolutionQuery(coord ?? skipToken);
 
+  const { data: date } = useGetDateTimeQuery(coord ?? skipToken);
+
   useEffect(() => {
     const interval = setTimeout(() => setDateTime(new Date()), 1000);
     return () => {
@@ -40,11 +44,11 @@ const CurrentWeather: FC = () => {
 
   return (
     <StyledCurrentWeather>
-      <Title more={toDateTime(dateTime)}>Текущая погода</Title>
+      <Title more={date?.date}>Текущая погода</Title>
       <CurrentWeatherContent>
         <CurrentForecast>
           <FlexContainer>
-            <ImgContainer size='100px' src={weatherConditions(weather)} />
+            <ImgContainer size='100px' src={weatherConditions(weather?.weather)} />
             <Temp>
               {weather?.temp.toFixed()}
               <span>°</span>
@@ -73,8 +77,14 @@ const CurrentWeather: FC = () => {
             <Value>{weather?.wind_spd.toFixed()} м/с</Value>
           </WeatherDetail>
           <WeatherDetail>
-            <Label>Направление</Label>
+            <Label>
+              <ImgContainer size='20px' src={direction} />
+            </Label>
             <Value>{weather?.wind_cdir}</Value>
+          </WeatherDetail>
+          <WeatherDetail>
+            <Label>Дата</Label>
+            <Value>{date?.date_time_txt}</Value>
           </WeatherDetail>
         </WeatherDetails>
       </CurrentWeatherContent>

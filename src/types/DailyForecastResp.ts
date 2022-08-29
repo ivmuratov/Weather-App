@@ -1,10 +1,11 @@
 import { ICoordinates } from './ICoordinates';
+import { IDailyWeatherItem } from './IDailyWeatherItem';
 
 export interface DailyForecastResp extends ICoordinates {
   /**
    * Список прогнозов погоды
    */
-  data: any[];
+  data: IDailyWeatherItem[];
   /**
    * Местный часовой пояс
    */

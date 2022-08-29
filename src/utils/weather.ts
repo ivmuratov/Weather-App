@@ -8,17 +8,14 @@ import drizzle from '../imgs/drizzle/drizzle.svg';
 import rain from '../imgs/rain/rain.svg';
 import snow from '../imgs/snow/snow.svg';
 import thunderstorm from '../imgs/thunderstorm/thunderstorm.svg';
-import { ICurrentWeather } from '../types/ICurrentWeather';
+import { IWeatherConditions } from '../types/IWeatherConditions';
 
-//TODO: 2. сделать в figma луну
-export const weatherConditions = (weather: ICurrentWeather | undefined): string | undefined => {
+//TODO: сделать в figma луну
+export const weatherConditions = (weather: IWeatherConditions | undefined): string | undefined => {
   if (typeof weather === 'undefined') {
     return;
   }
-  const {
-    weather: { code },
-  } = weather;
-
+  const { code } = weather;
   if (code <= 233 && code >= 200) {
     return thunderstorm;
   } else if (code <= 302) {

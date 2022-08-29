@@ -12,8 +12,8 @@ body {
   font-family: 'Urbanist', sans-serif;
 	font-weight: 600;
   transition: all 0.5s;
-  background: ${(props) => props.theme.background};
-  color: ${(props) => props.theme.color}
+  background: ${(props) => props.theme.background} fixed;
+  color: ${(props) => props.theme.color};  
 }
 
 ._ibg {
