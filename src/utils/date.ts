@@ -1,22 +1,34 @@
 import { TimeUnit } from '../constants/enums';
 
-export const currentDateUnix = (): number => {
-  return Number((Date.now() / 1000).toFixed());
-};
+const days = new Map<number, string>([
+  [0, 'ВС'],
+  [1, 'ПН'],
+  [2, 'ВТ'],
+  [3, 'СР'],
+  [4, 'ЧТ'],
+  [5, 'ПТ'],
+  [6, 'СБ'],
+]);
 
-export const toLocalDateTime = (date: number | undefined): Date | undefined => {
+export const toLocalDateTimeStr = (date: number | undefined): string | undefined => {
   if (typeof date === 'undefined') {
     return;
   }
-  return new Date(date * 1000);
+  return new Date(date * 1000).toLocaleString().slice(0, -3);
 };
 
-export const isDay = (sunrise: number, sunset: number): boolean => {
-  return currentDateUnix() >= sunrise && currentDateUnix() <= sunset;
+export const toLocalDateStr = (date: number | undefined): string | undefined => {
+  if (typeof date === 'undefined') {
+    return;
+  }
+  return new Date(date * 1000).toLocaleDateString();
 };
 
-export const toDateTime = (date: Date): string => {
-  return date.toLocaleString().slice(0, -3);
+export const getDay = (date: number | undefined): string | undefined => {
+  if (typeof date === 'undefined') {
+    return;
+  }
+  return days.get(new Date(date * 1000).getDay());
 };
 
 export const convertToMs = (value: number, timeUnit: TimeUnit): number => {

@@ -1,31 +1,30 @@
 import { FC, ReactNode } from 'react';
 import styled from 'styled-components';
 
-import { FlexContainer } from './FlexContainer';
-
 import { BreakPoint } from '../../styles/vars';
 
-const StyledTitle = styled(FlexContainer)`
+const StyledTitle = styled.h2`
+  display: flex;
   justify-content: space-between;
-  margin: 0 0 15px 0;
+  margin: 0 0 30px 0;
 
   @media (max-width: ${BreakPoint.md2}) {
     align-items: center;
     flex-flow: column wrap;
   }
-`;
 
-const Content = styled.h2`
-  font-size: 24px;
-  font-weight: 700;
-`;
+  span:first-child {
+    font-size: 24px;
+    font-weight: 700;
+  }
 
-const More = styled.div`
-  font-size: 24px;
-  font-weight: 700;
+  span:last-child {
+    font-size: 24px;
+    font-weight: 700;
 
-  @media (max-width: ${BreakPoint.md2}) {
-    font-size: 22px;
+    @media (max-width: ${BreakPoint.md2}) {
+      font-size: 22px;
+    }
   }
 `;
 
@@ -37,8 +36,8 @@ interface TitleProps {
 const Title: FC<TitleProps> = ({ children, more }) => {
   return (
     <StyledTitle>
-      <Content>{children}</Content>
-      <More>{more}</More>
+      <span>{children}</span>
+      <span>{more}</span>
     </StyledTitle>
   );
 };

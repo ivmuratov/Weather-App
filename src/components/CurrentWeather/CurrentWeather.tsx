@@ -18,7 +18,7 @@ import { useGetDateTimeQuery } from '../../services/dateTimeService';
 import { useGetCoordQuery, useGetCurrentAirPolutionQuery } from '../../services/openWeatherMapService';
 import { useGetCurrentWeatherQuery } from '../../services/weatherBitService';
 import { airNames } from '../../utils/airPollution';
-import { toDateTime } from '../../utils/date';
+import { toLocalDateTimeStr } from '../../utils/date';
 import { weatherConditions } from '../../utils/weather';
 import { FlexContainer } from '../UI/FlexContainer';
 import { ImgContainer } from '../UI/ImgContainer';
@@ -44,11 +44,11 @@ const CurrentWeather: FC = () => {
 
   return (
     <StyledCurrentWeather>
-      <Title more={date?.date}>Текущая погода</Title>
+      <Title more={toLocalDateTimeStr(date?.date_time_unix)}>Текущая погода</Title>
       <CurrentWeatherContent>
         <CurrentForecast>
           <FlexContainer>
-            <ImgContainer size='100px' src={weatherConditions(weather?.weather)} />
+            <ImgContainer size='105px' src={weatherConditions(weather?.weather)} />
             <Temp>
               {weather?.temp.toFixed()}
               <span>°</span>
@@ -81,10 +81,6 @@ const CurrentWeather: FC = () => {
               <ImgContainer size='20px' src={direction} />
             </Label>
             <Value>{weather?.wind_cdir}</Value>
-          </WeatherDetail>
-          <WeatherDetail>
-            <Label>Дата</Label>
-            <Value>{date?.date_time_txt}</Value>
           </WeatherDetail>
         </WeatherDetails>
       </CurrentWeatherContent>

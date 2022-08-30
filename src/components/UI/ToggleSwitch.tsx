@@ -45,11 +45,11 @@ const Input = styled.input`
   }
 `;
 
-interface Props {
+interface ToggleSwitchProps {
   onClick?: React.MouseEventHandler;
 }
 
-const ToggleSwitch: FC<Props> = ({ onClick }) => {
+const ToggleSwitch: FC<ToggleSwitchProps> = ({ onClick }) => {
   const [checked, setChecked] = useState<boolean>(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

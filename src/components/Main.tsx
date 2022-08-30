@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styled from 'styled-components';
 
 import CurrentWeather from './CurrentWeather/CurrentWeather';
-import DailyForecastList from './DailyForecastList/DailyForecastList';
+import DailyForecastContent from './DailyForecastList/DailyForecastContent';
 
 import { Container } from '../styles/global';
 
@@ -15,7 +15,7 @@ const Main: FC = () => {
     <MainStyled>
       <Container>
         <CurrentWeather />
-        <DailyForecastList />
+        <DailyForecastContent />
       </Container>
     </MainStyled>
   );
