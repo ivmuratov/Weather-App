@@ -25,7 +25,7 @@ export const Date = styled.div`
 export const Temp = styled.div`
   display: flex;
   align-items: flex-end;
-  margin: 0 10px 0 10px;
+  margin: 0 10px 0 0;
 
   span:first-child {
     font-size: 42px;

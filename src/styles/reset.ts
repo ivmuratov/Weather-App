@@ -11,11 +11,6 @@ html {
   box-sizing: inherit;
 }
 
-ul[class],
-ol[class] {
-  padding: 0;
-}
-
 body,
 div,
 span,
@@ -82,6 +77,8 @@ img {
 ol,
 ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 input,

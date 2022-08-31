@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
+import cityReducer from './reducers/citySlice';
 import themeReducer from './reducers/themeSlice';
 
 import { dateTimeApi } from '../services/dateTimeService';
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   [weatherBitApi.reducerPath]: weatherBitApi.reducer,
   [dateTimeApi.reducerPath]: dateTimeApi.reducer,
   themeReducer,
+  cityReducer,
 });
 
 export const setupStore = () => {

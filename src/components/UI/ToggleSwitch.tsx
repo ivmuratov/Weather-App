@@ -1,10 +1,9 @@
 import { ChangeEvent, FC, useState } from 'react';
 import styled from 'styled-components';
 
-const Label = styled.label`
+const StyledToggleSwitch = styled.label`
   display: flex;
   align-items: center;
-  gap: 10px;
   cursor: pointer;
 `;
 
@@ -57,10 +56,10 @@ const ToggleSwitch: FC<ToggleSwitchProps> = ({ onClick }) => {
   };
 
   return (
-    <Label>
+    <StyledToggleSwitch>
       <Input type='checkbox' onClick={onClick} onChange={handleChange} checked={checked} />
       <Switch />
-    </Label>
+    </StyledToggleSwitch>
   );
 };
 

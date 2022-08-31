@@ -1,5 +1,5 @@
 import { skipToken } from '@reduxjs/toolkit/dist/query';
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 
 import {
   CurrentForecast,
@@ -13,21 +13,21 @@ import {
 } from './CurrentWeather.styled';
 
 import { AirQualitativeName } from '../../constants/enums';
+import { useAppSelector } from '../../hooks/redux';
 import direction from '../../imgs/icons/direction.svg';
 import { useGetDateTimeQuery } from '../../services/dateTimeService';
 import { useGetCoordQuery, useGetCurrentAirPolutionQuery } from '../../services/openWeatherMapService';
 import { useGetCurrentWeatherQuery } from '../../services/weatherBitService';
 import { airNames } from '../../utils/airPollution';
-import { toLocalDateTimeStr } from '../../utils/date';
 import { weatherConditions } from '../../utils/weather';
 import { FlexContainer } from '../UI/FlexContainer';
 import { ImgContainer } from '../UI/ImgContainer';
 import Title from '../UI/Title';
 
 const CurrentWeather: FC = () => {
-  const [dateTime, setDateTime] = useState<Date>(new Date());
+  const { name } = useAppSelector((state) => state.cityReducer);
 
-  const { data: coord } = useGetCoordQuery('Novosibirsk');
+  const { data: coord } = useGetCoordQuery(name);
 
   const { data: weather } = useGetCurrentWeatherQuery(coord ?? skipToken);
 
@@ -35,16 +35,9 @@ const CurrentWeather: FC = () => {
 
   const { data: date } = useGetDateTimeQuery(coord ?? skipToken);
 
-  useEffect(() => {
-    const interval = setTimeout(() => setDateTime(new Date()), 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, [dateTime]);
-
   return (
     <StyledCurrentWeather>
-      <Title more={toLocalDateTimeStr(date?.date_time_unix)}>Текущая погода</Title>
+      <Title more={date?.date_time.slice(0, -3)}>Текущая погода</Title>
       <CurrentWeatherContent>
         <CurrentForecast>
           <FlexContainer>

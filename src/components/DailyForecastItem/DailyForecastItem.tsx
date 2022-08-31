@@ -19,10 +19,10 @@ const DailyForecastItem: FC<DailyForecastItemProps> = ({ item }) => {
           <span>{getDay(item.ts)}</span>
           <span>{toLocalDateStr(item.ts)?.slice(0, -5)}</span>
         </Date>
-        <ImgContainer size='65px' src={weatherConditions(item?.weather)} />
+        <ImgContainer margin='0 10px 0 0' size='65px' src={weatherConditions(item?.weather)} />
         <Temp>
-          <span>{item.high_temp.toFixed()}°</span>
-          <span>/{item.low_temp.toFixed()}°</span>
+          <span>{item.max_temp.toFixed()}°</span>
+          <span>/{item.min_temp.toFixed()}°</span>
         </Temp>
       </Info>
       <Description>{item.weather.description}</Description>
