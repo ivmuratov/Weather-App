@@ -16,8 +16,8 @@ const DailyForecastItem: FC<DailyForecastItemProps> = ({ item }) => {
     <StyledDailyForecastItem>
       <Info>
         <Date>
-          <span>{getDay(item.ts)}</span>
-          <span>{toLocalDateStr(item.ts)?.slice(0, -5)}</span>
+          <span>{getDay(item.valid_date)}</span>
+          <span>{toLocalDateStr(item.valid_date)?.slice(0, -5)}</span>
         </Date>
         <ImgContainer margin='0 10px 0 0' size='65px' src={weatherConditions(item?.weather)} />
         <Temp>

@@ -19,6 +19,7 @@ import { useGetDateTimeQuery } from '../../services/dateTimeService';
 import { useGetCoordQuery, useGetCurrentAirPolutionQuery } from '../../services/openWeatherMapService';
 import { useGetCurrentWeatherQuery } from '../../services/weatherBitService';
 import { airNames } from '../../utils/airPollution';
+import { toLocalDateTimeStr } from '../../utils/date';
 import { weatherConditions } from '../../utils/weather';
 import { FlexContainer } from '../UI/FlexContainer';
 import { ImgContainer } from '../UI/ImgContainer';
@@ -37,7 +38,7 @@ const CurrentWeather: FC = () => {
 
   return (
     <StyledCurrentWeather>
-      <Title more={date?.date_time.slice(0, -3)}>Текущая погода</Title>
+      <Title more={toLocalDateTimeStr(date?.date_time)?.slice(0, -3)}>Текущая погода</Title>
       <CurrentWeatherContent>
         <CurrentForecast>
           <FlexContainer>

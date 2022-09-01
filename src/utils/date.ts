@@ -10,25 +10,25 @@ const days = new Map<number, string>([
   [6, 'СБ'],
 ]);
 
-export const toLocalDateTimeStr = (date: number | undefined): string | undefined => {
+export const toLocalDateTimeStr = (date: string | undefined): string | undefined => {
   if (typeof date === 'undefined') {
     return;
   }
-  return new Date(date * 1000).toLocaleString().slice(0, -3);
+  return new Date(date).toLocaleString();
 };
 
-export const toLocalDateStr = (date: number | undefined): string | undefined => {
+export const toLocalDateStr = (date: string | undefined): string | undefined => {
   if (typeof date === 'undefined') {
     return;
   }
-  return new Date(date * 1000).toLocaleDateString();
+  return new Date(date).toLocaleDateString();
 };
 
-export const getDay = (date: number | undefined): string | undefined => {
+export const getDay = (date: string | undefined): string | undefined => {
   if (typeof date === 'undefined') {
     return;
   }
-  return days.get(new Date(date * 1000).getDay());
+  return days.get(new Date(date).getDay());
 };
 
 export const convertToMs = (value: number, timeUnit: TimeUnit): number => {
