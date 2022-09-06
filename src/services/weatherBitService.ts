@@ -1,12 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { API_KEY2 } from '../constants/api';
-import { CurrentWeatherResp } from '../types/CurrentWeatherResp';
-import { DailyForecastParams } from '../types/DailyForecastParams';
-import { DailyForecastResp } from '../types/DailyForecastResp';
-import { ICoordinates } from '../types/ICoordinates';
-import { ICurrentWeather } from '../types/ICurrentWeather';
-import { IDailyWeatherItem } from '../types/IDailyWeatherItem';
+import { CurrentWeatherResp } from '../models/CurrentWeatherResp';
+import { DailyForecastParams } from '../models/DailyForecastParams';
+import { DailyForecastResp } from '../models/DailyForecastResp';
+import { ICoordinates } from '../models/ICoordinates';
+import { ICurrentWeather } from '../models/ICurrentWeather';
+import { IDailyWeatherItem } from '../models/IDailyWeatherItem';
 
 export const weatherBitApi = createApi({
   reducerPath: 'weatherBitApi',

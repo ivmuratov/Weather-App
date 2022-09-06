@@ -13,10 +13,10 @@ import {
 } from './CurrentWeather.styled';
 
 import { AirQualitativeName } from '../../constants/enums';
-import { useAppSelector } from '../../hooks/redux';
+import { useCoord } from '../../hooks/useCoord';
 import direction from '../../imgs/icons/direction.svg';
 import { useGetDateTimeQuery } from '../../services/dateTimeService';
-import { useGetCoordQuery, useGetCurrentAirPolutionQuery } from '../../services/openWeatherMapService';
+import { useGetCurrentAirPolutionQuery } from '../../services/openWeatherMapService';
 import { useGetCurrentWeatherQuery } from '../../services/weatherBitService';
 import { airNames } from '../../utils/airPollution';
 import { toLocalDateTimeStr } from '../../utils/date';
@@ -26,9 +26,7 @@ import { ImgContainer } from '../UI/ImgContainer';
 import Title from '../UI/Title';
 
 const CurrentWeather: FC = () => {
-  const { name } = useAppSelector((state) => state.cityReducer);
-
-  const { data: coord } = useGetCoordQuery(name);
+  const coord = useCoord();
 
   const { data: weather } = useGetCurrentWeatherQuery(coord ?? skipToken);
 

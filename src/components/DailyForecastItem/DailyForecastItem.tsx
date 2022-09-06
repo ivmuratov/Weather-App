@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { Date, Info, Description, StyledDailyForecastItem, Temp } from './DailyForecastItem.styled';
 
-import { IDailyWeatherItem } from '../../types/IDailyWeatherItem';
+import { IDailyWeatherItem } from '../../models/IDailyWeatherItem';
 import { getDay, toLocalDateStr } from '../../utils/date';
 import { weatherConditions } from '../../utils/weather';
 import { ImgContainer } from '../UI/ImgContainer';

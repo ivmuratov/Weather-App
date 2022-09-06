@@ -30,7 +30,7 @@ const StyledTitle = styled.h2`
 
 interface TitleProps {
   children: ReactNode;
-  more?: string;
+  more?: ReactNode | string;
 }
 
 const Title: FC<TitleProps> = ({ children, more }) => {

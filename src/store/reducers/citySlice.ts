@@ -1,19 +1,25 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { IDropdownItem } from '../../types/IDropdownItem';
+
 interface CityState {
-  name: string;
+  city: IDropdownItem;
 }
 
 const initialState: CityState = {
-  name: 'Novosibirsk',
+  city: {
+    id: 1,
+    label: 'Новосибирск',
+    value: 'Novosibirsk',
+  },
 };
 
 export const citySlice = createSlice({
   name: 'city',
   initialState,
   reducers: {
-    selectCity(state, action: PayloadAction<string>) {
-      state.name = action.payload;
+    selectCity(state, action: PayloadAction<IDropdownItem>) {
+      state.city = action.payload;
     },
   },
 });

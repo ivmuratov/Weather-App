@@ -1,38 +1,41 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import styled from 'styled-components';
+
+import { useModalOpen } from '../../hooks/useModalOpen';
+import { IDropdownItem } from '../../types/IDropdownItem';
 
 interface DropdownListProps {
   open?: boolean;
 }
 
 const StyledDropdown = styled.div`
+  display: flex;
+  align-items: baseline;
+`;
+
+const DropdownHeader = styled.div``;
+
+const DropdownContent = styled.div`
   position: relative;
 `;
 
-const DropdownHeader = styled.div`
-  padding: 10px 20px;
+const DropdownLabel = styled.label`
   background: rgba(0, 0, 0, 0);
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-  transition: background 0.5s ease, box-shadow 0.5s ease;
+  padding: 0 10px;
   cursor: pointer;
 
   &:hover {
-    background: rgba(0, 0, 0, 0.085);
-    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.25);
-    transition: background 0.5s ease, box-shadow 0.5s ease;
+    /* transition: color 0.5s ease; */
   }
 `;
 
 const DropdownList = styled.ul<DropdownListProps>`
-  display: ${({ open }) => (open ? 'block' : 'none')};
   position: absolute;
   max-height: 100px;
+  padding: 5px 10px;
   overflow: auto;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 5px;
-  padding: 10px 20px;
+  backdrop-filter: blur(3px);
   transition: display 0.5s ease;
 
   &::-webkit-scrollbar {
@@ -46,7 +49,7 @@ const DropdownList = styled.ul<DropdownListProps>`
 `;
 
 const DropdownItem = styled.li`
-  margin: 0 0 5px 0;
+  margin: 0 0 10px 0;
   cursor: pointer;
 
   &:last-child {
@@ -55,29 +58,35 @@ const DropdownItem = styled.li`
 `;
 
 interface DropdownProps {
-  label?: string;
-  value: string;
-  select: (item: string) => void;
-  items: string[];
+  header?: string;
+  label: string;
+  select: (item: IDropdownItem) => void;
+  items: IDropdownItem[];
 }
 
-const Dropdown: FC<DropdownProps> = ({ label, value, select, items }) => {
-  const [open, setOpen] = useState<boolean>(false);
+const Dropdown: FC<DropdownProps> = ({ header, label, select, items }) => {
+  const { ref, open, setOpen } = useModalOpen<HTMLUListElement>(false);
 
-  const onItemClick = (item: string) => {
+  const onItemClick = (item: IDropdownItem) => {
     select(item);
     setOpen(false);
   };
 
   return (
     <StyledDropdown>
-      <span>{label}</span>
-      <DropdownHeader onClick={() => setOpen(!open)}>{value}</DropdownHeader>
-      <DropdownList open={open}>
-        {items.map((item) => (
-          <DropdownItem onClick={() => onItemClick(item)}>{item}</DropdownItem>
-        ))}
-      </DropdownList>
+      <DropdownHeader>{header}</DropdownHeader>
+      <DropdownContent>
+        <DropdownLabel onClick={() => setOpen(!open)}>{label}</DropdownLabel>
+        {open && (
+          <DropdownList ref={ref}>
+            {items.map((item) => (
+              <DropdownItem key={item.id} onClick={() => onItemClick(item)}>
+                {item.label}
+              </DropdownItem>
+            ))}
+          </DropdownList>
+        )}
+      </DropdownContent>
     </StyledDropdown>
   );
 };

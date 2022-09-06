@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { API_KEY3 } from '../constants/api';
-import { DateTimeResp } from '../types/DateTimeResp';
-import { ICoordinates } from '../types/ICoordinates';
+import { DateTimeResp } from '../models/DateTimeResp';
+import { ICoordinates } from '../models/ICoordinates';
 
 export const dateTimeApi = createApi({
   reducerPath: 'dateTimeApi',

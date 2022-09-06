@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styled from 'styled-components';
 
 import CurrentWeather from './CurrentWeather/CurrentWeather';
-import DailyForecastContent from './DailyForecastList/DailyForecastContent';
+import DailyForecastContent from './DailyForecastContent/DailyForecastContent';
 
 import { Container } from '../styles/global';
 

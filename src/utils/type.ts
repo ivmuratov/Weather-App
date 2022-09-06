@@ -1,5 +1,5 @@
-import { DailyForecastParams } from '../types/DailyForecastParams';
-import { ICoordinates } from '../types/ICoordinates';
+import { DailyForecastParams } from '../models/DailyForecastParams';
+import { ICoordinates } from '../models/ICoordinates';
 
 export const getDailyForecastParams = (
   coord: ICoordinates | undefined,
