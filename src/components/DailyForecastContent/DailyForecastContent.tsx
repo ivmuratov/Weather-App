@@ -14,7 +14,7 @@ import Dropdown from '../UI/Dropdown';
 import { Pagination } from '../UI/Pagination';
 import Title from '../UI/Title';
 
-const items: IDropdownItem[] = [
+const dropdownItems: IDropdownItem[] = [
   { id: 1, label: '7', value: '7' },
   { id: 2, label: '8', value: '8' },
   { id: 3, label: '9', value: '9' },
@@ -30,7 +30,7 @@ const items: IDropdownItem[] = [
 const DailyForecastContent: FC = () => {
   const coord = useCoord();
 
-  const [daysForecast, setDaysForecast] = useState<IDropdownItem>(items[0]);
+  const [daysForecast, setDaysForecast] = useState<IDropdownItem>(dropdownItems[9]);
 
   const { data: dailyForecast } = useGetDailyForecastQuery(
     getDailyForecastParams(coord, +daysForecast.value) ?? skipToken,
@@ -40,7 +40,9 @@ const DailyForecastContent: FC = () => {
 
   return (
     <StyledDailyForecastContent>
-      <Title more={<Dropdown header='Дни:' label={daysForecast.label} select={setDaysForecast} items={items} />}>
+      <Title
+        more={<Dropdown header='Дни:' label={daysForecast.label} select={setDaysForecast} items={dropdownItems} />}
+      >
         Прогноз погоды на {daysForecast.label} дней
       </Title>
       <DailyForecastList>

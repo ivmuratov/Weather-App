@@ -31,7 +31,7 @@ const DropdownLabel = styled.label`
 
 const DropdownList = styled.ul<DropdownListProps>`
   position: absolute;
-  max-height: 100px;
+  max-height: 130px;
   padding: 5px 10px;
   overflow: auto;
   z-index: 100;

@@ -12,7 +12,7 @@ export const usePagination = <T extends {}>(
 } => {
   const [currPage, setCurrPage] = useState<number>(1);
 
-  const [itemsPerPage, setItemsPerPage] = useState<number>(7);
+  const itemsPerPage: number = 7;
 
   const lastItemIndex = currPage * itemsPerPage;
 

@@ -1,30 +1,38 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
+import { LeftArrowButton, RightArrowButton } from './ArrowButton';
+
 import { IPageActions } from '../../types/IPageActions';
 
 const StyledPagination = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const PageList = styled.ul`
   display: flex;
 `;
 
-const PrevPage = styled.button`
-  cursor: pointer;
-`;
+interface PageNumberProps {
+  active: boolean;
+}
 
-const NextPage = styled.button`
-  cursor: pointer;
-`;
-
-const PageNumber = styled.li`
+const PageNumber = styled.li<PageNumberProps>`
+  font-size: 24px;
   padding: 10px;
-  background: white;
-  border-radius: 2px;
+  margin: 0 10px 0 0;
   cursor: pointer;
+  border-bottom: ${({ active }) => (active ? '2px solid' : '0')};
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:last-child {
+    margin: 0;
+  }
 `;
 
 interface PaginationProps {
@@ -43,22 +51,18 @@ export const Pagination: FC<PaginationProps> = ({ currPage, items, itemsPerPage,
 
   return (
     <StyledPagination>
-      {currPage === pageNumbers[0] ? (
-        <PrevPage disabled>Предыдущая</PrevPage>
-      ) : (
-        <PrevPage onClick={actions.prevPage}>Предыдущая</PrevPage>
-      )}
+      {currPage === pageNumbers[0] ? <LeftArrowButton inactive /> : <LeftArrowButton onClick={actions.prevPage} />}
       <PageList>
         {pageNumbers.map((number) => (
-          <PageNumber key={number} onClick={() => actions.paginate(number)}>
+          <PageNumber key={number} active={currPage === number} onClick={() => actions.paginate(number)}>
             {number}
           </PageNumber>
         ))}
       </PageList>
       {currPage === pageNumbers[pageNumbers.length - 1] ? (
-        <NextPage disabled>Следующая</NextPage>
+        <RightArrowButton inactive />
       ) : (
-        <NextPage onClick={actions.nextPage}>Следующая</NextPage>
+        <RightArrowButton onClick={actions.nextPage} />
       )}
     </StyledPagination>
   );
