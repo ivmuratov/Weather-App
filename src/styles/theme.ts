@@ -7,7 +7,7 @@ export const lightTheme: DefaultTheme = {
     boxShadow: '0px 0px 40px -10px rgba(34, 60, 80, 0.5)',
   },
   card: {
-    boxShadow: '0px 0px 20px -7px rgba(0, 0, 0, 0.5);',
+    boxShadow: '0px 0px 20px -7px rgba(0, 0, 0, 0.5)',
   },
 };
 
@@ -18,6 +18,6 @@ export const darkTheme: DefaultTheme = {
     boxShadow: '0px 0px 40px -10px rgba(255, 255, 255, 0.5)',
   },
   card: {
-    boxShadow: '0px 0px 20px -7px rgba(193, 193, 193, 0.5);',
+    boxShadow: '0px 0px 20px -7px rgba(193, 193, 193, 0.5)',
   },
 };

@@ -4,18 +4,17 @@ interface ArrowButtonProps {
   inactive?: boolean;
 }
 
-const base = css<ArrowButtonProps>`
-  content: '';
-  border: 2px solid currentColor;
-  background-color: ${(props) => props.theme.color};
-  display: block;
-  height: 25px;
-  position: absolute;
-  top: ${({ inactive }) => (inactive ? '13px' : '5px')};
-  transition: transform 0.5s ease;
+const inactive = css<ArrowButtonProps>`
+  ${(props) =>
+    props.inactive &&
+    css`
+      top: 17px;
+      left: 23px;
+      transform: rotate(90deg);
+    `}
 `;
 
-const ArrowButton = styled.div<ArrowButtonProps>`
+const AbstractArrowButton = styled.div`
   height: 50px;
   width: 50px;
   box-shadow: 2px;
@@ -29,45 +28,77 @@ const ArrowButton = styled.div<ArrowButtonProps>`
     opacity: 0.8;
   }
 
+  &::before,
+  &::after {
+    content: '';
+    border: 2px solid currentColor;
+    background-color: ${(props) => props.theme.color};
+    display: block;
+    height: 15px;
+    position: absolute;
+  }
+`;
+
+export const RightArrowButton = styled(AbstractArrowButton)`
   &::before {
-    ${base}
-    margin-top: 0px;
+    top: 13px;
+    left: 25px;
+    transform: rotate(135deg);
+    ${inactive}
   }
 
   &::after {
-    ${base}
-    margin-top: ${({ inactive }) => (inactive ? '0px' : '15px')};
+    top: 21px;
+    left: 25px;
+    transform: rotate(45deg);
+    ${inactive}
   }
 `;
 
-const rightBase = css<ArrowButtonProps>`
-  left: ${({ inactive }) => (inactive ? '23px' : '25px')};
-`;
-
-export const RightArrowButton = styled(ArrowButton)`
+export const LeftArrowButton = styled(AbstractArrowButton)`
   &::before {
-    ${rightBase}
-    transform: ${({ inactive }) => (inactive ? 'rotate(90deg)' : 'rotate(135deg)')};
+    top: 13px;
+    left: 20px;
+    transform: rotate(45deg);
+    ${inactive}
   }
 
   &::after {
-    ${rightBase}
-    transform: ${({ inactive }) => (inactive ? 'rotate(90deg)' : 'rotate(45deg)')};
+    top: 21px;
+    left: 20px;
+    transform: rotate(-45deg);
+    ${inactive}
   }
 `;
 
-const leftBase = css<ArrowButtonProps>`
-  left: ${({ inactive }) => (inactive ? '23px' : '20px')};
-`;
-
-export const LeftArrowButton = styled(ArrowButton)`
+export const DownArrowButton = styled(AbstractArrowButton)`
   &::before {
-    ${leftBase}
-    transform: ${({ inactive }) => (inactive ? 'rotate(90deg)' : 'rotate(45deg)')};
+    top: 19px;
+    left: 19px;
+    transform: rotate(-45deg);
+    ${inactive}
   }
 
   &::after {
-    ${leftBase}
-    transform: ${({ inactive }) => (inactive ? 'rotate(90deg)' : 'rotate(-45deg)')};
+    top: 19px;
+    left: 27px;
+    transform: rotate(45deg);
+    ${inactive}
+  }
+`;
+
+export const UpArrowButton = styled(AbstractArrowButton)`
+  &::before {
+    top: 17px;
+    left: 19px;
+    transform: rotate(45deg);
+    ${inactive}
+  }
+
+  &::after {
+    top: 17px;
+    left: 27px;
+    transform: rotate(-45deg);
+    ${inactive}
   }
 `;

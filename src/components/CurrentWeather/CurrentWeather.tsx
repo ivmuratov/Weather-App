@@ -66,7 +66,7 @@ const CurrentWeather: FC = () => {
           </WeatherDetail>
           <WeatherDetail>
             <Label>Ветер</Label>
-            <Value>{weather?.wind_spd.toFixed()} м/с</Value>
+            <Value>{weather?.wind_spd.toPrecision(2)} м/с</Value>
           </WeatherDetail>
           <WeatherDetail>
             <Label>

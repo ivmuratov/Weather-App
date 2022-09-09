@@ -8,11 +8,14 @@ import {
   Temp,
   MoreContent,
   MainContent,
+  WeatherDetailsItem,
+  WeatherDetailItem,
 } from './DailyForecastItem.styled';
 
 import { IDailyWeatherItem } from '../../models/IDailyWeatherItem';
 import { getDay, toLocalDateStr } from '../../utils/date';
 import { weatherConditions } from '../../utils/weather';
+import { DownArrowButton, UpArrowButton } from '../UI/ArrowButton';
 import { ImgContainer } from '../UI/ImgContainer';
 
 interface DailyForecastItemProps {
@@ -21,6 +24,11 @@ interface DailyForecastItemProps {
 
 const DailyForecastItem: FC<DailyForecastItemProps> = ({ item }) => {
   const [open, setOpen] = useState<boolean>(false);
+
+  const toggleOpen = () => {
+    console.log('open');
+    setOpen(!open);
+  };
 
   return (
     <StyledDailyForecastItem>
@@ -37,9 +45,54 @@ const DailyForecastItem: FC<DailyForecastItemProps> = ({ item }) => {
           </Temp>
         </Info>
         <Description>{item.weather.description}</Description>
-        <div onClick={() => setOpen(!open)}>больше</div>
+        {open ? <UpArrowButton onClick={toggleOpen} /> : <DownArrowButton onClick={toggleOpen} />}
       </MainContent>
-      {open && <MoreContent>Доп контент</MoreContent>}
+      {open && (
+        <MoreContent>
+          <WeatherDetailsItem>
+            <WeatherDetailItem>
+              <span>Давление</span>
+              <span>{item.pres.toFixed()} мбар</span>
+            </WeatherDetailItem>
+            <WeatherDetailItem>
+              <span>Влажность</span>
+              <span>{item.rh} %</span>
+            </WeatherDetailItem>
+            <WeatherDetailItem>
+              <span>Облачность</span>
+              <span>{item.clouds} %</span>
+            </WeatherDetailItem>
+          </WeatherDetailsItem>
+          <WeatherDetailsItem>
+            <WeatherDetailItem>
+              <span>Ветер</span>
+              <span>{item.wind_spd.toPrecision(2)} м/с</span>
+            </WeatherDetailItem>
+            <WeatherDetailItem>
+              <span>Порывы ветра</span>
+              <span>{item.wind_gust_spd.toPrecision(2)} м/с</span>
+            </WeatherDetailItem>
+            <WeatherDetailItem>
+              <span>Направление</span>
+              <span>{item.wind_cdir}</span>
+            </WeatherDetailItem>
+          </WeatherDetailsItem>
+          <WeatherDetailsItem>
+            <WeatherDetailItem>
+              <span>Вероятность осадков</span>
+              <span>{item.pop} %</span>
+            </WeatherDetailItem>
+            <WeatherDetailItem>
+              <span>Видимость</span>
+              <span>{item.vis.toFixed()} км</span>
+            </WeatherDetailItem>
+            <WeatherDetailItem>
+              <span>UV-индекс</span>
+              <span>{item.uv}</span>
+            </WeatherDetailItem>
+          </WeatherDetailsItem>
+        </MoreContent>
+      )}
     </StyledDailyForecastItem>
   );
 };
