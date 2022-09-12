@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface ImgContainerProps {
   margin?: string;
@@ -7,6 +7,8 @@ interface ImgContainerProps {
 
 export const ImgContainer = styled.img<ImgContainerProps>`
   margin: ${({ margin }) => margin};
-  height: ${({ size }) => size};
-  width: ${({ size }) => size};
+  ${({ size }) => css`
+    width: ${size};
+    height: ${size};
+  `};
 `;

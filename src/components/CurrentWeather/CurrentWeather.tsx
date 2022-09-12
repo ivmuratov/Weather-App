@@ -14,7 +14,6 @@ import {
 
 import { AirQualitativeName } from '../../constants/enums';
 import { useCoord } from '../../hooks/useCoord';
-import direction from '../../imgs/icons/direction.svg';
 import { useGetDateTimeQuery } from '../../services/dateTimeService';
 import { useGetCurrentAirPolutionQuery } from '../../services/openWeatherMapService';
 import { useGetCurrentWeatherQuery } from '../../services/weatherBitService';
@@ -22,6 +21,7 @@ import { airNames } from '../../utils/airPollution';
 import { toLocalDateTimeStr } from '../../utils/date';
 import { weatherConditions } from '../../utils/weather';
 import { FlexContainer } from '../UI/FlexContainer';
+import { Icon } from '../UI/Icon';
 import { ImgContainer } from '../UI/ImgContainer';
 import Title from '../UI/Title';
 
@@ -70,7 +70,7 @@ const CurrentWeather: FC = () => {
           </WeatherDetail>
           <WeatherDetail>
             <Label>
-              <ImgContainer size='20px' src={direction} />
+              Направление <Icon name='wind-direction' />
             </Label>
             <Value>{weather?.wind_cdir}</Value>
           </WeatherDetail>

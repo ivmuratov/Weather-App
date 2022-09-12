@@ -6,9 +6,10 @@ import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { citySlice } from '../../store/reducers/citySlice';
 import { themeSlice } from '../../store/reducers/themeSlice';
-import { Container } from '../../styles/global';
+
 import { lightTheme } from '../../styles/theme';
 import { IDropdownItem } from '../../types/IDropdownItem';
+import { Container } from '../UI/Container';
 import Dropdown from '../UI/Dropdown';
 
 import ToggleSwitch from '../UI/ToggleSwitch';
