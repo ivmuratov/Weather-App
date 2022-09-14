@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import Footer from './components/Footer';
+import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Main from './components/Main';
 import { Wrapper } from './components/UI/Wrapper';
