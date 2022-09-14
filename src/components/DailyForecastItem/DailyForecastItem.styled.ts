@@ -4,6 +4,10 @@ import { BreakPoint } from '../../styles/vars';
 
 export const StyledDailyForecastItem = styled.li`
   margin: 0 0 15px 0;
+
+  &:last-child {
+    margin: 0;
+  }
 `;
 
 export const MainContent = styled.div`
@@ -30,7 +34,7 @@ export const Date = styled.div`
   margin: 0 15px 0 0;
 `;
 
-export const Temp = styled.div`
+export const MaxMinTemp = styled.div`
   display: flex;
   align-items: baseline;
   margin: 0 10px 0 0;
@@ -76,7 +80,7 @@ export const MoreContent = styled.div`
   }
 `;
 
-export const WeatherDetailsItem = styled.div`
+export const WeatherDetailsGroup = styled.div`
   display: flex;
   flex-direction: column;
   flex: 0 1 auto;
@@ -96,13 +100,13 @@ export const WeatherDetailsItem = styled.div`
   }
 `;
 
-export const WeatherDetailItem = styled.div`
+export const WeatherDetailsItem = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 0 10px 0;
 
   span {
-    margin: 0 10px 0 0;
+    margin: 0 25px 0 0;
   }
 
   &:last-child {

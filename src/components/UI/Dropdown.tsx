@@ -35,7 +35,7 @@ const DropdownList = styled.ul<DropdownListProps>`
   padding: 5px 10px;
   overflow: auto;
   z-index: 100;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(8px);
   transition: display 0.5s ease;
 
   &::-webkit-scrollbar {

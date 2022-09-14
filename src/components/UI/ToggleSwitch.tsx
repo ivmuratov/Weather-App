@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, MouseEventHandler, useState } from 'react';
 import styled from 'styled-components';
 
 const StyledToggleSwitch = styled.label`
@@ -45,7 +45,7 @@ const Input = styled.input`
 `;
 
 interface ToggleSwitchProps {
-  onClick?: React.MouseEventHandler;
+  onClick: MouseEventHandler;
 }
 
 const ToggleSwitch: FC<ToggleSwitchProps> = ({ onClick }) => {

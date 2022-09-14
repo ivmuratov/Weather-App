@@ -5,17 +5,18 @@ import {
   Info,
   Description,
   StyledDailyForecastItem,
-  Temp,
+  MaxMinTemp,
   MoreContent,
   MainContent,
+  WeatherDetailsGroup,
   WeatherDetailsItem,
-  WeatherDetailItem,
 } from './DailyForecastItem.styled';
 
 import { IDailyWeatherItem } from '../../models/IDailyWeatherItem';
 import { getDay, toLocalDateStr } from '../../utils/date';
 import { weatherConditions } from '../../utils/weather';
 import { DownArrowButton, UpArrowButton } from '../UI/ArrowButton';
+import Icon from '../UI/Icon';
 import { ImgContainer } from '../UI/ImgContainer';
 
 interface DailyForecastItemProps {
@@ -23,11 +24,10 @@ interface DailyForecastItemProps {
 }
 
 const DailyForecastItem: FC<DailyForecastItemProps> = ({ item }) => {
-  const [open, setOpen] = useState<boolean>(false);
+  const [openMoreContent, setOpenMoreContent] = useState<boolean>(false);
 
   const toggleOpen = () => {
-    console.log('open');
-    setOpen(!open);
+    setOpenMoreContent(!openMoreContent);
   };
 
   return (
@@ -39,58 +39,85 @@ const DailyForecastItem: FC<DailyForecastItemProps> = ({ item }) => {
             <span>{toLocalDateStr(item.valid_date)?.slice(0, -5)}</span>
           </Date>
           <ImgContainer margin='0 10px 0 0' size='65px' src={weatherConditions(item?.weather)} />
-          <Temp>
+          <MaxMinTemp>
             <span>{item.max_temp.toFixed()}°</span>
             <span>/{item.min_temp.toFixed()}°</span>
-          </Temp>
+          </MaxMinTemp>
         </Info>
         <Description>{item.weather.description}</Description>
-        {open ? <UpArrowButton onClick={toggleOpen} /> : <DownArrowButton onClick={toggleOpen} />}
+        {openMoreContent ? <UpArrowButton onClick={toggleOpen} /> : <DownArrowButton onClick={toggleOpen} />}
       </MainContent>
-      {open && (
+      {openMoreContent && (
         <MoreContent>
-          <WeatherDetailsItem>
-            <WeatherDetailItem>
+          <WeatherDetailsGroup>
+            <WeatherDetailsItem>
               <span>Давление</span>
-              <span>{item.pres.toFixed()} мбар</span>
-            </WeatherDetailItem>
-            <WeatherDetailItem>
+              <span>
+                <Icon name='pressure' margin='0 4px 0 0' />
+                {item.pres.toFixed()} мбар
+              </span>
+            </WeatherDetailsItem>
+            <WeatherDetailsItem>
               <span>Влажность</span>
-              <span>{item.rh} %</span>
-            </WeatherDetailItem>
-            <WeatherDetailItem>
+              <span>
+                <Icon name='humidity' margin='0 2px 0 0' />
+                {item.rh} %
+              </span>
+            </WeatherDetailsItem>
+            <WeatherDetailsItem>
               <span>Облачность</span>
-              <span>{item.clouds} %</span>
-            </WeatherDetailItem>
-          </WeatherDetailsItem>
-          <WeatherDetailsItem>
-            <WeatherDetailItem>
+              <span>
+                <Icon name='cloudy' margin='0 4px 0 0' />
+                {item.clouds} %
+              </span>
+            </WeatherDetailsItem>
+          </WeatherDetailsGroup>
+          <WeatherDetailsGroup>
+            <WeatherDetailsItem>
               <span>Ветер</span>
-              <span>{item.wind_spd.toPrecision(2)} м/с</span>
-            </WeatherDetailItem>
-            <WeatherDetailItem>
+              <span>
+                <Icon name='wind' margin='0 4px 0 0' />
+                {item.wind_spd.toPrecision(2)} м/с
+              </span>
+            </WeatherDetailsItem>
+            <WeatherDetailsItem>
               <span>Порывы ветра</span>
-              <span>{item.wind_gust_spd.toPrecision(2)} м/с</span>
-            </WeatherDetailItem>
-            <WeatherDetailItem>
+              <span>
+                <Icon name='wind-gust' margin='0 4px 0 0' />
+                {item.wind_gust_spd.toPrecision(2)} м/с
+              </span>
+            </WeatherDetailsItem>
+            <WeatherDetailsItem>
               <span>Направление</span>
-              <span>{item.wind_cdir}</span>
-            </WeatherDetailItem>
-          </WeatherDetailsItem>
-          <WeatherDetailsItem>
-            <WeatherDetailItem>
+              <span>
+                <Icon name='wind-direction' margin='0 4px 0 0' />
+                {item.wind_cdir}
+              </span>
+            </WeatherDetailsItem>
+          </WeatherDetailsGroup>
+          <WeatherDetailsGroup>
+            <WeatherDetailsItem>
               <span>Вероятность осадков</span>
-              <span>{item.pop} %</span>
-            </WeatherDetailItem>
-            <WeatherDetailItem>
+              <span>
+                <Icon name='pop' margin='0 2px 0 0' />
+                {item.pop} %
+              </span>
+            </WeatherDetailsItem>
+            <WeatherDetailsItem>
               <span>Видимость</span>
-              <span>{item.vis.toFixed()} км</span>
-            </WeatherDetailItem>
-            <WeatherDetailItem>
+              <span>
+                <Icon name='visibility' margin='0 4px 0 0' />
+                {item.vis.toFixed()} км
+              </span>
+            </WeatherDetailsItem>
+            <WeatherDetailsItem>
               <span>UV-индекс</span>
-              <span>{item.uv}</span>
-            </WeatherDetailItem>
-          </WeatherDetailsItem>
+              <span>
+                <Icon name='air-pollution' margin='0 2px 0 0' />
+                {item.uv}
+              </span>
+            </WeatherDetailsItem>
+          </WeatherDetailsGroup>
         </MoreContent>
       )}
     </StyledDailyForecastItem>

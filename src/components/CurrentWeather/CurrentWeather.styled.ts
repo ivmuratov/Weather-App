@@ -34,7 +34,8 @@ export const Temp = styled.h1`
   }
 `;
 
-export const WeatherDetails = styled(FlexContainer)`
+export const CurrentWeatherDetails = styled.div`
+  display: flex;
   flex-direction: column;
   flex: 0 1 auto;
   justify-content: space-between;
@@ -44,17 +45,18 @@ export const WeatherDetails = styled(FlexContainer)`
   }
 `;
 
-export const WeatherDetail = styled(FlexContainer)`
+export const CurrentWeatherDetail = styled.div`
+  display: flex;
   justify-content: space-between;
-  padding: 0 0 10px 0;
+  margin: 0 0 10px 0;
+
+  span {
+    &:first-child {
+      margin: 0 15px 0 0;
+    }
+  }
 
   &:last-child {
-    padding: 0;
+    margin: 0;
   }
 `;
-
-export const Label = styled.span`
-  margin: 0 10px 0 0;
-`;
-
-export const Value = styled.span``;
