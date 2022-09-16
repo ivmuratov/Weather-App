@@ -1,9 +1,9 @@
-import { ICoordinates } from './ICoordinates';
-import { IWeather } from './IWeather';
+import ICoordinates from './ICoordinates';
+import IWeather from './IWeather';
 
 type PartDay = 'd' | 'n';
 
-export interface ICurrentWeather extends ICoordinates, IWeather {
+interface ICurrentWeather extends ICoordinates, IWeather {
   /**
    * Часть суток
    */
@@ -78,3 +78,5 @@ export interface ICurrentWeather extends ICoordinates, IWeather {
    */
   station: string;
 }
+
+export default ICurrentWeather;

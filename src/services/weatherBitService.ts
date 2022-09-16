@@ -1,12 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { API_KEY2 } from '../constants/api';
-import { CurrentWeatherResp } from '../models/CurrentWeatherResp';
-import { DailyForecastParams } from '../models/DailyForecastParams';
-import { DailyForecastResp } from '../models/DailyForecastResp';
-import { ICoordinates } from '../models/ICoordinates';
-import { ICurrentWeather } from '../models/ICurrentWeather';
-import { IDailyWeatherItem } from '../models/IDailyWeatherItem';
+import CurrentWeatherResp from '../models/CurrentWeatherResp';
+import DailyWeatherResp from '../models/DailyWeatherResp';
+import ICoordinates from '../models/ICoordinates';
+import ICurrentWeather from '../models/ICurrentWeather';
+import IDailyWeatherItem from '../models/IDailyWeatherItem';
+import IDailyWeatherParams from '../types/IDailyWeatherParams';
 
 export const weatherBitApi = createApi({
   reducerPath: 'weatherBitApi',
@@ -24,7 +24,7 @@ export const weatherBitApi = createApi({
       }),
       transformResponse: (response: CurrentWeatherResp) => response.data[0],
     }),
-    getDailyForecast: build.query<IDailyWeatherItem[], DailyForecastParams>({
+    getDailyForecast: build.query<IDailyWeatherItem[], IDailyWeatherParams>({
       query: ({ lat, lon, days }) => ({
         url: `forecast/daily?&key=${API_KEY2}&lang=ru`,
         params: {
@@ -33,7 +33,7 @@ export const weatherBitApi = createApi({
           days,
         },
       }),
-      transformResponse: (response: DailyForecastResp) => response.data,
+      transformResponse: (response: DailyWeatherResp) => response.data,
     }),
   }),
 });

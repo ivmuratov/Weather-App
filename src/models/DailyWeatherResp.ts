@@ -1,7 +1,7 @@
-import { ICoordinates } from './ICoordinates';
-import { IDailyWeatherItem } from './IDailyWeatherItem';
+import ICoordinates from './ICoordinates';
+import IDailyWeatherItem from './IDailyWeatherItem';
 
-export interface DailyForecastResp extends ICoordinates {
+interface DailyWeatherResp extends ICoordinates {
   /**
    * Список прогнозов погоды
    */
@@ -23,3 +23,5 @@ export interface DailyForecastResp extends ICoordinates {
    */
   state_code: string;
 }
+
+export default DailyWeatherResp;

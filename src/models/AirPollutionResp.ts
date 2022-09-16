@@ -1,7 +1,9 @@
-import { IAirPollution } from './IAirPollution';
-import { ICoordinates } from './ICoordinates';
+import IAirPollution from './IAirPollution';
+import ICoordinates from './ICoordinates';
 
-export interface AirPollutionResp {
+interface AirPollutionResp {
   coord: ICoordinates;
   list: IAirPollution[];
 }
+
+export default AirPollutionResp;

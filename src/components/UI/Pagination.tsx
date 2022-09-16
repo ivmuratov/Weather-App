@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { LeftArrowButton, RightArrowButton } from './ArrowButton';
+import LeftArrowButton from './ArrowButton/LeftArrowButton';
+import RightArrowButton from './ArrowButton/RightArrowButton';
 
-import { IPageActions } from '../../types/IPageActions';
+import IPageActions from '../../types/IPageActions';
 
 const StyledPagination = styled.div`
   display: flex;
@@ -42,7 +43,7 @@ interface PaginationProps {
   actions: IPageActions;
 }
 
-export const Pagination: FC<PaginationProps> = ({ currPage, items, itemsPerPage, actions }) => {
+const Pagination: FC<PaginationProps> = ({ currPage, items, itemsPerPage, actions }) => {
   const pageNumbers: number[] = [];
 
   for (let i: number = 1; i <= Math.ceil(items / itemsPerPage); i++) {
@@ -67,3 +68,5 @@ export const Pagination: FC<PaginationProps> = ({ currPage, items, itemsPerPage,
     </StyledPagination>
   );
 };
+
+export default Pagination;

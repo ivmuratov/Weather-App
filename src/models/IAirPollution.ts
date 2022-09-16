@@ -1,8 +1,10 @@
-import { IAirComponents } from './IAirComponents';
-import { IAirQualityIndex } from './IAirQualityIndex';
+import IAirComponents from './IAirComponents';
+import IAirQualityIndex from './IAirQualityIndex';
 
-export interface IAirPollution {
+interface IAirPollution {
   dt: number;
   main: IAirQualityIndex;
   components: IAirComponents;
 }
+
+export default IAirPollution;

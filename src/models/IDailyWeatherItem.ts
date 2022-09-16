@@ -1,6 +1,6 @@
-import { IWeather } from './IWeather';
+import IWeather from './IWeather';
 
-export interface IDailyWeatherItem extends IWeather {
+interface IDailyWeatherItem extends IWeather {
   /**
    * Местная дата, на которую действителен прогноз, ГГГГ-ММ-ДД
    */
@@ -86,3 +86,5 @@ export interface IDailyWeatherItem extends IWeather {
    */
   sunset_ts: number;
 }
+
+export default IDailyWeatherItem;

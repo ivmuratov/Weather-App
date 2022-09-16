@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { FooterContent, StyledFooter } from './Footer.styled';
 
-import { Container } from '../UI/Container';
+import Container from '../UI/Container';
 
 const Footer: FC = () => {
   return (

@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 import { BreakPoint } from '../../styles/vars';
-import { FlexContainer } from '../UI/FlexContainer';
 
 export const StyledCurrentWeather = styled.section`
   margin: 0 0 150px 0;
 `;
 
-export const CurrentWeatherContent = styled(FlexContainer)`
+export const CurrentWeatherContent = styled.div`
+  display: flex;
   justify-content: space-between;
 
   @media (max-width: ${BreakPoint.md2}) {
@@ -16,7 +16,8 @@ export const CurrentWeatherContent = styled(FlexContainer)`
   }
 `;
 
-export const CurrentForecast = styled(FlexContainer)`
+export const CurrentForecast = styled.div`
+  display: flex;
   flex-flow: column wrap;
   margin: 0 30px 0 0;
 
@@ -25,7 +26,11 @@ export const CurrentForecast = styled(FlexContainer)`
   }
 `;
 
-export const Temp = styled.h1`
+export const Temp = styled.div`
+  display: flex;
+`;
+
+export const TempValue = styled.h1`
   font-size: 84px;
   font-weight: 700;
 
@@ -34,7 +39,12 @@ export const Temp = styled.h1`
   }
 `;
 
-export const CurrentWeatherDetails = styled.div`
+export const Description = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const CurrentWeatherDetailsList = styled.ul`
   display: flex;
   flex-direction: column;
   flex: 0 1 auto;
@@ -45,7 +55,7 @@ export const CurrentWeatherDetails = styled.div`
   }
 `;
 
-export const CurrentWeatherDetail = styled.div`
+export const CurrentWeatherDetailsItem = styled.li`
   display: flex;
   justify-content: space-between;
   margin: 0 0 10px 0;

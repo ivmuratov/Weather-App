@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 
 import { BreakPoint } from '../../styles/vars';
 
-export const StyledDailyForecastItem = styled.li`
+export const StyledDailyWeatherItem = styled.li`
   margin: 0 0 15px 0;
 
   &:last-child {
@@ -80,7 +80,7 @@ export const MoreContent = styled.div`
   }
 `;
 
-export const WeatherDetailsGroup = styled.div`
+export const DailyWeatherDetailsGroup = styled.div`
   display: flex;
   flex-direction: column;
   flex: 0 1 auto;
@@ -100,7 +100,7 @@ export const WeatherDetailsGroup = styled.div`
   }
 `;
 
-export const WeatherDetailsItem = styled.div`
+export const DailyWeatherDetailsItem = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 0 10px 0;

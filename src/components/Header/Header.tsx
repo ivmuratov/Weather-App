@@ -8,8 +8,8 @@ import { citySlice } from '../../store/reducers/citySlice';
 import { themeSlice } from '../../store/reducers/themeSlice';
 
 import { lightTheme } from '../../styles/theme';
-import { IDropdownItem } from '../../types/IDropdownItem';
-import { Container } from '../UI/Container';
+import IDropdownItem from '../../types/IDropdownItem';
+import Container from '../UI/Container';
 import Dropdown from '../UI/Dropdown';
 
 import ToggleSwitch from '../UI/ToggleSwitch';

@@ -1,5 +1,7 @@
 import { AirQualitativeName } from '../constants/enums';
 
-export interface IAirQualityIndex {
+interface IAirQualityIndex {
   aqi: AirQualitativeName;
 }
+
+export default IAirQualityIndex;

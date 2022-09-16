@@ -7,8 +7,10 @@ interface ContainerProps {
   indent?: Indent;
 }
 
-export const Container = styled.div<ContainerProps>`
+const Container = styled.div<ContainerProps>`
   max-width: ${({ maxWidth = MaxWidth.mw1, indent = Indent.ind1 }) => maxWidth + indent * 2 + 'px'};
   padding: ${({ indent = Indent.ind1 }) => '0 ' + indent + 'px'};
   margin: 0 auto;
 `;
+
+export default Container;

@@ -8,7 +8,9 @@ import drizzle from '../imgs/drizzle/drizzle.svg';
 import rain from '../imgs/rain/rain.svg';
 import snow from '../imgs/snow/snow.svg';
 import thunderstorm from '../imgs/thunderstorm/thunderstorm.svg';
-import { IWeatherConditions } from '../models/IWeatherConditions';
+import ICoordinates from '../models/ICoordinates';
+import IWeatherConditions from '../models/IWeatherConditions';
+import IDailyWeatherParams from '../types/IDailyWeatherParams';
 
 //TODO: сделать в figma луну
 export const weatherConditions = (weather: IWeatherConditions | undefined): string | undefined => {
@@ -39,4 +41,19 @@ export const weatherConditions = (weather: IWeatherConditions | undefined): stri
   } else {
     return atmosphere;
   }
+};
+
+export const getDailyForecastParams = (
+  coord: ICoordinates | undefined,
+  days: number,
+): IDailyWeatherParams | undefined => {
+  if (typeof coord === 'undefined') {
+    return;
+  }
+  const { lat, lon } = coord;
+  return {
+    lat,
+    lon,
+    days,
+  };
 };

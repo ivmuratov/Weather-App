@@ -1,4 +1,4 @@
-export interface DateTimeResp {
+interface DateTimeResp {
   timezone: string;
   timezone_offset: number;
   timezone_offset_with_dst: number;
@@ -17,3 +17,5 @@ export interface DateTimeResp {
   is_dst: boolean;
   dst_savings: number;
 }
+
+export default DateTimeResp;

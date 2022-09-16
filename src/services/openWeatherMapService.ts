@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { API_KEY } from '../constants/api';
-import { AirPollutionResp } from '../models/AirPollutionResp';
-import { CoordinatesResp } from '../models/CoordinatesResp';
-import { IAirPollution } from '../models/IAirPollution';
-import { ICoordinates } from '../models/ICoordinates';
+import AirPollutionResp from '../models/AirPollutionResp';
+import CoordinatesResp from '../models/CoordinatesResp';
+import IAirPollution from '../models/IAirPollution';
+import ICoordinates from '../models/ICoordinates';
 
 export const openWeatherMapApi = createApi({
   reducerPath: 'openWeatherMapApi',

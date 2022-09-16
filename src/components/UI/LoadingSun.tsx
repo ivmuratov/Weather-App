@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styled, { keyframes } from 'styled-components';
 
-import { ImgContainer } from './ImgContainer';
+import ImgContainer from './ImgContainer';
 
 import sunny from '../../imgs/clouds/sunny.svg';
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { IPageActions } from '../types/IPageActions';
+import IPageActions from '../types/IPageActions';
 
 export const usePagination = <T extends {}>(
   totalItems: T[] | undefined,

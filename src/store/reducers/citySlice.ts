@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { IDropdownItem } from '../../types/IDropdownItem';
+import IDropdownItem from '../../types/IDropdownItem';
 
 interface CityState {
   city: IDropdownItem;

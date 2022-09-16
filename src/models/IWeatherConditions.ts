@@ -1,4 +1,4 @@
-export interface IWeatherConditions {
+interface IWeatherConditions {
   /**
    * Иконка погоды
    */
@@ -12,3 +12,5 @@ export interface IWeatherConditions {
    */
   description: string;
 }
+
+export default IWeatherConditions;

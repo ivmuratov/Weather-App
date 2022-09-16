@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Main from './components/Main';
-import { Wrapper } from './components/UI/Wrapper';
+import Wrapper from './components/UI/Wrapper';
 import { useAppSelector } from './hooks/useAppSelector';
 import { GlobalStyles } from './styles/global';
 import { ResetStyles } from './styles/reset';

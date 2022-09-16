@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styled from 'styled-components';
 
 import { useModalOpen } from '../../hooks/useModalOpen';
-import { IDropdownItem } from '../../types/IDropdownItem';
+import IDropdownItem from '../../types/IDropdownItem';
 
 interface DropdownListProps {
   open?: boolean;

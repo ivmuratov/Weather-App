@@ -1,20 +1,20 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-html,
-body {
-  height: 100%;
-}
+  html,
+  body {
+    height: 100%;
+  }
 
-body {
-  font-family: 'Urbanist', sans-serif;
-	font-weight: 600;
-  transition: all 0.5s;
-  background: ${(props) => props.theme.background} fixed;
-  color: ${(props) => props.theme.color};  
-}
+  body {
+    font-family: 'Urbanist', sans-serif;
+	  font-weight: 600;
+    transition: all 0.5s;
+    background: ${(props) => props.theme.background} fixed;
+    color: ${(props) => props.theme.color};  
+  }
 
-._ibg {
+  ._ibg {
     position: relative;
     
     img {
@@ -25,5 +25,5 @@ body {
         left: 0;
         object-fit: cover;
     }
-}
+  }
 `;

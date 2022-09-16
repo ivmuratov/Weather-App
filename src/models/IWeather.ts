@@ -1,6 +1,6 @@
-import { IWeatherConditions } from './IWeatherConditions';
+import IWeatherConditions from './IWeatherConditions';
 
-export interface IWeather {
+interface IWeather {
   /**
    * УСТАРЕЛО
    * Дата действия прогноза, ГГГГ-ММ-ДД:ЧЧ
@@ -71,3 +71,5 @@ export interface IWeather {
    */
   weather: IWeatherConditions;
 }
+
+export default IWeather;

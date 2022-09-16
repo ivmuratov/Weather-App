@@ -1,4 +1,4 @@
-export interface ICoordinates {
+interface ICoordinates {
   /**
    * Долгота, градусы
    */
@@ -8,3 +8,5 @@ export interface ICoordinates {
    */
   lat: number;
 }
+
+export default ICoordinates;

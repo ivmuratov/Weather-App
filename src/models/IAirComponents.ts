@@ -1,4 +1,4 @@
-export interface IAirComponents {
+interface IAirComponents {
   co: number;
   no: number;
   no2: number;
@@ -8,3 +8,5 @@ export interface IAirComponents {
   pm10: number;
   nh3: number;
 }
+
+export default IAirComponents;
