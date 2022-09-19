@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
 import styled from 'styled-components';
 
 import { useModalOpen } from '../../hooks/useModalOpen';
@@ -8,31 +8,39 @@ interface DropdownListProps {
   open?: boolean;
 }
 
-const StyledDropdown = styled.div`
-  display: flex;
-  align-items: baseline;
-`;
-
 const DropdownHeader = styled.div``;
 
 const DropdownContent = styled.div`
   position: relative;
 `;
 
-const DropdownLabel = styled.label`
-  background: rgba(0, 0, 0, 0);
+const DropdownInput = styled.input.attrs({
+  type: 'text',
+})`
+  border: none;
   padding: 0 10px;
+  background: rgba(0, 0, 0, 0);
+  color: inherit;
   cursor: pointer;
 
-  &:hover {
-    /* transition: color 0.5s ease; */
+  &:focus {
+    outline: none;
+  }
+
+  &:focus::placeholder {
+    color: transparent;
+  }
+
+  &::placeholder {
+    margin: 0;
+    color: inherit;
   }
 `;
 
 const DropdownList = styled.ul<DropdownListProps>`
   position: absolute;
-  max-height: 130px;
-  padding: 5px 10px;
+  max-height: 150px;
+  border-radius: 0 0 10px 10px;
   overflow: auto;
   z-index: 100;
   backdrop-filter: blur(8px);
@@ -49,11 +57,21 @@ const DropdownList = styled.ul<DropdownListProps>`
 `;
 
 const DropdownItem = styled.li`
-  margin: 0 0 10px 0;
+  padding: 10px;
   cursor: pointer;
 
-  &:last-child {
-    margin: 0;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+`;
+
+const StyledDropdown = styled.div`
+  display: flex;
+  align-items: baseline;
+
+  ${DropdownInput},
+  ${DropdownItem} {
+    width: 200px;
   }
 `;
 
@@ -67,23 +85,38 @@ interface DropdownProps {
 const Dropdown: FC<DropdownProps> = ({ header, label, select, items }) => {
   const { ref, open, setOpen } = useModalOpen<HTMLUListElement>(false);
 
-  const onItemClick = (item: IDropdownItem) => {
+  const [searchQuery, setSearchQuery] = useState<string>('');
+
+  const handleOnItemClick = (item: IDropdownItem) => {
     select(item);
     setOpen(false);
+    setSearchQuery('');
   };
 
   return (
     <StyledDropdown>
       <DropdownHeader>{header}</DropdownHeader>
       <DropdownContent>
-        <DropdownLabel onClick={() => setOpen(!open)}>{label}</DropdownLabel>
+        <DropdownInput
+          onClick={() => setOpen(true)}
+          value={searchQuery}
+          onChange={(event: ChangeEvent<HTMLInputElement>) => setSearchQuery(event.target.value)}
+          placeholder={label}
+        />
         {open && (
           <DropdownList ref={ref}>
-            {items.map((item) => (
-              <DropdownItem key={item.id} onClick={() => onItemClick(item)}>
-                {item.label}
-              </DropdownItem>
-            ))}
+            {items
+              .filter((item) => {
+                if (searchQuery !== '') {
+                  return item.label.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase());
+                }
+                return item;
+              })
+              .map((item) => (
+                <DropdownItem key={item.id} onClick={() => handleOnItemClick(item)}>
+                  {item.label}
+                </DropdownItem>
+              ))}
           </DropdownList>
         )}
       </DropdownContent>

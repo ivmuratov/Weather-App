@@ -24,8 +24,8 @@ const AbstractArrowButton = styled.div`
 
   &:hover {
     box-shadow: ${(props) => props.theme.button.boxShadow};
-    transition: box-shadow 0.5s ease, opacity 0.5s ease;
     opacity: 0.8;
+    transition: box-shadow 0.5s ease, opacity 0.5s ease;
   }
 
   &::before,
