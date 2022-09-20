@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components/macro';
 
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';

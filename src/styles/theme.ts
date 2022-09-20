@@ -1,4 +1,4 @@
-import { DefaultTheme } from 'styled-components';
+import { DefaultTheme } from 'styled-components/macro';
 
 export const lightTheme: DefaultTheme = {
   background: 'linear-gradient(-45deg, #1c92d2, #f2fcfe)',

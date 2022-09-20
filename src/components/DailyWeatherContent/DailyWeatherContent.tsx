@@ -1,7 +1,7 @@
 import { skipToken } from '@reduxjs/toolkit/dist/query';
 import { FC, Fragment } from 'react';
 
-import { DailyWeatherList, StyledDailyWeatherContent } from './DailyWeatherContent.styled';
+import { DailyWeatherList, DailyWeatherContentStyled } from './DailyWeatherContent.styled';
 
 import { useCoord } from '../../hooks/useCoord';
 import { usePagination } from '../../hooks/usePagination';
@@ -21,7 +21,7 @@ const DailyWeatherContent: FC = () => {
   const { currItems, currPage, itemsPerPage, actions } = usePagination<IDailyWeatherItem>(dailyForecast);
 
   return (
-    <StyledDailyWeatherContent>
+    <DailyWeatherContentStyled>
       <Title>Прогноз погоды на 16 дней</Title>
       {isLoading ? (
         <LoadingSun size='150px' />
@@ -38,7 +38,7 @@ const DailyWeatherContent: FC = () => {
           />
         </Fragment>
       )}
-    </StyledDailyWeatherContent>
+    </DailyWeatherContentStyled>
   );
 };
 

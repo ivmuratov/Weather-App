@@ -1,9 +1,9 @@
 import { FC, ReactNode } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 import { BreakPoint } from '../../styles/vars';
 
-const StyledTitle = styled.h2`
+const TitleStyled = styled.h2`
   display: flex;
   justify-content: space-between;
   margin: 0 0 30px 0;
@@ -35,10 +35,10 @@ interface TitleProps {
 
 const Title: FC<TitleProps> = ({ children, more }) => {
   return (
-    <StyledTitle>
+    <TitleStyled>
       <span>{children}</span>
       <span>{more}</span>
-    </StyledTitle>
+    </TitleStyled>
   );
 };
 

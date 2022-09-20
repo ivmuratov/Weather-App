@@ -1,12 +1,12 @@
 import { FC } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 import LeftArrowButton from './ArrowButton/LeftArrowButton';
 import RightArrowButton from './ArrowButton/RightArrowButton';
 
 import IPageActions from '../../types/IPageActions';
 
-const StyledPagination = styled.div`
+const PaginationStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,7 +51,7 @@ const Pagination: FC<PaginationProps> = ({ currPage, items, itemsPerPage, action
   }
 
   return (
-    <StyledPagination>
+    <PaginationStyled>
       {currPage === pageNumbers[0] ? <LeftArrowButton inactive /> : <LeftArrowButton onClick={actions.prevPage} />}
       <PageList>
         {pageNumbers.map((number) => (
@@ -65,7 +65,7 @@ const Pagination: FC<PaginationProps> = ({ currPage, items, itemsPerPage, action
       ) : (
         <RightArrowButton onClick={actions.nextPage} />
       )}
-    </StyledPagination>
+    </PaginationStyled>
   );
 };
 

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components/macro';
 
 import ImgContainer from './ImgContainer';
 
@@ -15,7 +15,7 @@ const animate = keyframes`
   }
 `;
 
-const StyledLoadingSun = styled.div`
+const LoadingSunStyled = styled.div`
   animation: ${animate} 10s linear infinite;
 `;
 
@@ -25,9 +25,9 @@ interface LoadingSunProps {
 
 const LoadingSun: FC<LoadingSunProps> = ({ size }) => {
   return (
-    <StyledLoadingSun>
+    <LoadingSunStyled>
       <ImgContainer src={sunny} size={size} margin='0 auto' />
-    </StyledLoadingSun>
+    </LoadingSunStyled>
   );
 };
 

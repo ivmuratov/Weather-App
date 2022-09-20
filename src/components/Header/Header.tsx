@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { HeaderContent, StyledHeader } from './Header.styled';
+import { Content, HeaderStyled } from './Header.styled';
 
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
@@ -12,7 +12,7 @@ import IDropdownItem from '../../types/IDropdownItem';
 import Container from '../UI/Container';
 import Dropdown from '../UI/Dropdown';
 
-import ToggleSwitch from '../UI/ToggleSwitch';
+import Toggle from '../UI/Toggle';
 
 const items: IDropdownItem[] = [
   { id: 1, label: 'Архангельск', value: 'Arkhangelsk' },
@@ -40,14 +40,14 @@ const Header: FC = () => {
   };
 
   return (
-    <StyledHeader>
+    <HeaderStyled>
       <Container>
-        <HeaderContent>
+        <Content>
           <Dropdown header={'Город:'} label={city.label} select={select} items={items} />
-          <ToggleSwitch onClick={() => dispatch(theme === lightTheme ? toggleOnDark(true) : toggleOnDark(false))} />
-        </HeaderContent>
+          <Toggle onClick={() => dispatch(theme === lightTheme ? toggleOnDark(true) : toggleOnDark(false))} />
+        </Content>
       </Container>
-    </StyledHeader>
+    </HeaderStyled>
   );
 };
 

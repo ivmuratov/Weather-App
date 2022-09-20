@@ -1,12 +1,12 @@
 import { FC } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import '../../iconfonts/style.css';
 
-interface StyledIconProps {
+interface IconStyledProps {
   margin?: string;
 }
 
-const StyledIcon = styled.i<StyledIconProps>`
+const IconStyled = styled.i<IconStyledProps>`
   margin: ${({ margin }) => margin};
 `;
 
@@ -16,7 +16,7 @@ interface IconProps {
 }
 
 const Icon: FC<IconProps> = ({ name, margin }) => {
-  return <StyledIcon className={`icon-${name}`} margin={margin} />;
+  return <IconStyled className={`icon-${name}`} margin={margin} />;
 };
 
 export default Icon;

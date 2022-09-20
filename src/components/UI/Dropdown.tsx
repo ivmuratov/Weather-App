@@ -1,20 +1,16 @@
 import { ChangeEvent, FC, useState } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 import { useModalOpen } from '../../hooks/useModalOpen';
 import IDropdownItem from '../../types/IDropdownItem';
 
-interface DropdownListProps {
-  open?: boolean;
-}
+const Header = styled.div``;
 
-const DropdownHeader = styled.div``;
-
-const DropdownContent = styled.div`
+const Content = styled.div`
   position: relative;
 `;
 
-const DropdownInput = styled.input.attrs({
+const SearchInput = styled.input.attrs({
   type: 'text',
 })`
   border: none;
@@ -37,7 +33,7 @@ const DropdownInput = styled.input.attrs({
   }
 `;
 
-const DropdownList = styled.ul<DropdownListProps>`
+const DropdownList = styled.ul`
   position: absolute;
   max-height: 150px;
   border-radius: 0 0 10px 10px;
@@ -65,11 +61,11 @@ const DropdownItem = styled.li`
   }
 `;
 
-const StyledDropdown = styled.div`
+const DropdownStyled = styled.div`
   display: flex;
   align-items: baseline;
 
-  ${DropdownInput},
+  ${SearchInput},
   ${DropdownItem} {
     width: 200px;
   }
@@ -94,10 +90,10 @@ const Dropdown: FC<DropdownProps> = ({ header, label, select, items }) => {
   };
 
   return (
-    <StyledDropdown>
-      <DropdownHeader>{header}</DropdownHeader>
-      <DropdownContent>
-        <DropdownInput
+    <DropdownStyled>
+      <Header>{header}</Header>
+      <Content>
+        <SearchInput
           onClick={() => setOpen(true)}
           value={searchQuery}
           onChange={(event: ChangeEvent<HTMLInputElement>) => setSearchQuery(event.target.value)}
@@ -119,8 +115,8 @@ const Dropdown: FC<DropdownProps> = ({ header, label, select, items }) => {
               ))}
           </DropdownList>
         )}
-      </DropdownContent>
-    </StyledDropdown>
+      </Content>
+    </DropdownStyled>
   );
 };
 

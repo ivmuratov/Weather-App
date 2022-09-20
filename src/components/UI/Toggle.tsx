@@ -1,13 +1,13 @@
 import { ChangeEvent, FC, MouseEventHandler, useState } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
-const StyledToggleSwitch = styled.label`
+const ToggleStyled = styled.label`
   display: flex;
   align-items: center;
   cursor: pointer;
 `;
 
-const Switch = styled.div`
+const Content = styled.div`
   position: relative;
   width: 60px;
   height: 30px;
@@ -35,7 +35,7 @@ const Input = styled.input`
   opacity: 0;
   position: absolute;
 
-  &:checked + ${Switch} {
+  &:checked + ${Content} {
     background: #575dff;
 
     &:before {
@@ -44,11 +44,11 @@ const Input = styled.input`
   }
 `;
 
-interface ToggleSwitchProps {
+interface ToggleProps {
   onClick: MouseEventHandler;
 }
 
-const ToggleSwitch: FC<ToggleSwitchProps> = ({ onClick }) => {
+const Toggle: FC<ToggleProps> = ({ onClick }) => {
   const [checked, setChecked] = useState<boolean>(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -56,11 +56,11 @@ const ToggleSwitch: FC<ToggleSwitchProps> = ({ onClick }) => {
   };
 
   return (
-    <StyledToggleSwitch>
+    <ToggleStyled>
       <Input type='checkbox' onClick={onClick} onChange={handleChange} checked={checked} />
-      <Switch />
-    </StyledToggleSwitch>
+      <Content />
+    </ToggleStyled>
   );
 };
 
-export default ToggleSwitch;
+export default Toggle;

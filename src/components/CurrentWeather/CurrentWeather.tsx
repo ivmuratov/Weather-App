@@ -2,12 +2,12 @@ import { skipToken } from '@reduxjs/toolkit/dist/query';
 import { FC } from 'react';
 
 import {
-  CurrentForecast,
-  CurrentWeatherContent,
-  StyledCurrentWeather,
+  Forecast,
+  Content,
+  CurrentWeatherStyled,
   TempValue,
-  CurrentWeatherDetailsItem,
-  CurrentWeatherDetailsList,
+  WeatherDetailsItem,
+  WeatherDetailsList,
   Temp,
   Description,
 } from './CurrentWeather.styled';
@@ -35,15 +35,15 @@ const CurrentWeather: FC = () => {
   const { data: date, isLoading: isLoadDate } = useGetDateTimeQuery(coord ?? skipToken);
 
   return (
-    <StyledCurrentWeather>
+    <CurrentWeatherStyled>
       <Title more={isLoadDate ? 'Загрузка времени' : toLocalDateTimeStr(date?.date_time)?.slice(0, -3)}>
         Текущая погода
       </Title>
       {isLoadWeather || isLoadAP ? (
         <LoadingSun size='150px' />
       ) : (
-        <CurrentWeatherContent>
-          <CurrentForecast>
+        <Content>
+          <Forecast>
             <Temp>
               <ImgContainer size='105px' src={weatherConditions(weather?.weather)} />
               <TempValue>
@@ -55,47 +55,47 @@ const CurrentWeather: FC = () => {
               <p>{weather?.weather.description}</p>
               <p>ощущается как {weather?.app_temp.toFixed()}°</p>
             </Description>
-          </CurrentForecast>
-          <CurrentWeatherDetailsList>
-            <CurrentWeatherDetailsItem>
+          </Forecast>
+          <WeatherDetailsList>
+            <WeatherDetailsItem>
               <span>Качество воздуха</span>
               <span>
                 <Icon name='air-pollution' margin='0 2px 0 0' />
                 {airNames.get(airPollution?.main.aqi as AirQualitativeName)}
               </span>
-            </CurrentWeatherDetailsItem>
-            <CurrentWeatherDetailsItem>
+            </WeatherDetailsItem>
+            <WeatherDetailsItem>
               <span>Давление</span>
               <span>
                 <Icon name='pressure' margin='0 4px 0 0' />
                 {weather?.pres.toFixed()} мбар
               </span>
-            </CurrentWeatherDetailsItem>
-            <CurrentWeatherDetailsItem>
+            </WeatherDetailsItem>
+            <WeatherDetailsItem>
               <span>Влажность</span>
               <span>
                 <Icon name='humidity' margin='0 2px 0 0' />
                 {weather?.rh.toFixed()} %
               </span>
-            </CurrentWeatherDetailsItem>
-            <CurrentWeatherDetailsItem>
+            </WeatherDetailsItem>
+            <WeatherDetailsItem>
               <span>Ветер</span>
               <span>
                 <Icon name='wind' margin='0 4px 0 0' />
                 {weather?.wind_spd.toPrecision(2)} м/с
               </span>
-            </CurrentWeatherDetailsItem>
-            <CurrentWeatherDetailsItem>
+            </WeatherDetailsItem>
+            <WeatherDetailsItem>
               <span>Направление</span>
               <span>
                 <Icon name='wind-direction' margin='0 4px 0 0' />
                 {weather?.wind_cdir}
               </span>
-            </CurrentWeatherDetailsItem>
-          </CurrentWeatherDetailsList>
-        </CurrentWeatherContent>
+            </WeatherDetailsItem>
+          </WeatherDetailsList>
+        </Content>
       )}
-    </StyledCurrentWeather>
+    </CurrentWeatherStyled>
   );
 };
 

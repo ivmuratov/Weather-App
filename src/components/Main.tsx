@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 import CurrentWeather from './CurrentWeather/CurrentWeather';
 import DailyWeatherContent from './DailyWeatherContent/DailyWeatherContent';

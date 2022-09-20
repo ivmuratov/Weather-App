@@ -1,12 +1,12 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 import { BreakPoint } from '../../styles/vars';
 
-export const StyledCurrentWeather = styled.section`
+export const CurrentWeatherStyled = styled.section`
   margin: 0 0 150px 0;
 `;
 
-export const CurrentWeatherContent = styled.div`
+export const Content = styled.div`
   display: flex;
   justify-content: space-between;
 
@@ -16,7 +16,7 @@ export const CurrentWeatherContent = styled.div`
   }
 `;
 
-export const CurrentForecast = styled.div`
+export const Forecast = styled.div`
   display: flex;
   flex-flow: column wrap;
   margin: 0 30px 0 0;
@@ -44,7 +44,7 @@ export const Description = styled.div`
   flex-direction: column;
 `;
 
-export const CurrentWeatherDetailsList = styled.ul`
+export const WeatherDetailsList = styled.ul`
   display: flex;
   flex-direction: column;
   flex: 0 1 auto;
@@ -55,7 +55,7 @@ export const CurrentWeatherDetailsList = styled.ul`
   }
 `;
 
-export const CurrentWeatherDetailsItem = styled.li`
+export const WeatherDetailsItem = styled.li`
   display: flex;
   justify-content: space-between;
   margin: 0 0 10px 0;

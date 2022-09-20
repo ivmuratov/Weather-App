@@ -4,12 +4,12 @@ import {
   Date,
   Info,
   Description,
-  StyledDailyWeatherItem,
+  DailyWeatherItemStyled,
   MaxMinTemp,
   MoreContent,
   MainContent,
-  DailyWeatherDetailsGroup,
-  DailyWeatherDetailsItem,
+  WeatherDetailsGroup,
+  WeatherDetailsItem,
 } from './DailyWeatherItem.styled';
 
 import IDailyWeatherItem from '../../models/IDailyWeatherItem';
@@ -32,7 +32,7 @@ const DailyWeatherItem: FC<DailyWeatherItemProps> = ({ item }) => {
   };
 
   return (
-    <StyledDailyWeatherItem>
+    <DailyWeatherItemStyled>
       <MainContent>
         <Info>
           <Date>
@@ -50,78 +50,78 @@ const DailyWeatherItem: FC<DailyWeatherItemProps> = ({ item }) => {
       </MainContent>
       {openMoreContent && (
         <MoreContent>
-          <DailyWeatherDetailsGroup>
-            <DailyWeatherDetailsItem>
+          <WeatherDetailsGroup>
+            <WeatherDetailsItem>
               <span>Давление</span>
               <span>
                 <Icon name='pressure' margin='0 4px 0 0' />
                 {item.pres.toFixed()} мбар
               </span>
-            </DailyWeatherDetailsItem>
-            <DailyWeatherDetailsItem>
+            </WeatherDetailsItem>
+            <WeatherDetailsItem>
               <span>Влажность</span>
               <span>
                 <Icon name='humidity' margin='0 2px 0 0' />
                 {item.rh} %
               </span>
-            </DailyWeatherDetailsItem>
-            <DailyWeatherDetailsItem>
+            </WeatherDetailsItem>
+            <WeatherDetailsItem>
               <span>Облачность</span>
               <span>
                 <Icon name='cloudy' margin='0 4px 0 0' />
                 {item.clouds} %
               </span>
-            </DailyWeatherDetailsItem>
-          </DailyWeatherDetailsGroup>
-          <DailyWeatherDetailsGroup>
-            <DailyWeatherDetailsItem>
+            </WeatherDetailsItem>
+          </WeatherDetailsGroup>
+          <WeatherDetailsGroup>
+            <WeatherDetailsItem>
               <span>Ветер</span>
               <span>
                 <Icon name='wind' margin='0 4px 0 0' />
                 {item.wind_spd.toPrecision(2)} м/с
               </span>
-            </DailyWeatherDetailsItem>
-            <DailyWeatherDetailsItem>
+            </WeatherDetailsItem>
+            <WeatherDetailsItem>
               <span>Порывы ветра</span>
               <span>
                 <Icon name='wind-gust' margin='0 4px 0 0' />
                 {item.wind_gust_spd.toPrecision(2)} м/с
               </span>
-            </DailyWeatherDetailsItem>
-            <DailyWeatherDetailsItem>
+            </WeatherDetailsItem>
+            <WeatherDetailsItem>
               <span>Направление</span>
               <span>
                 <Icon name='wind-direction' margin='0 4px 0 0' />
                 {item.wind_cdir}
               </span>
-            </DailyWeatherDetailsItem>
-          </DailyWeatherDetailsGroup>
-          <DailyWeatherDetailsGroup>
-            <DailyWeatherDetailsItem>
+            </WeatherDetailsItem>
+          </WeatherDetailsGroup>
+          <WeatherDetailsGroup>
+            <WeatherDetailsItem>
               <span>Вероятность осадков</span>
               <span>
                 <Icon name='pop' margin='0 2px 0 0' />
                 {item.pop} %
               </span>
-            </DailyWeatherDetailsItem>
-            <DailyWeatherDetailsItem>
+            </WeatherDetailsItem>
+            <WeatherDetailsItem>
               <span>Видимость</span>
               <span>
                 <Icon name='visibility' margin='0 4px 0 0' />
                 {item.vis.toFixed()} км
               </span>
-            </DailyWeatherDetailsItem>
-            <DailyWeatherDetailsItem>
+            </WeatherDetailsItem>
+            <WeatherDetailsItem>
               <span>UV-индекс</span>
               <span>
                 <Icon name='air-pollution' margin='0 2px 0 0' />
                 {item.uv}
               </span>
-            </DailyWeatherDetailsItem>
-          </DailyWeatherDetailsGroup>
+            </WeatherDetailsItem>
+          </WeatherDetailsGroup>
         </MoreContent>
       )}
-    </StyledDailyWeatherItem>
+    </DailyWeatherItemStyled>
   );
 };
 

@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
-export const StyledHeader = styled.header`
+export const HeaderStyled = styled.header`
   padding: 20px 0;
   margin: 0 0 50px 0;
 `;
 
-export const HeaderContent = styled.div`
+export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;

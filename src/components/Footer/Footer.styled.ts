@@ -1,13 +1,13 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 import { BreakPoint } from '../../styles/vars';
 
-export const StyledFooter = styled.footer`
+export const FooterStyled = styled.footer`
   flex: 0 0 auto;
   padding: 20px 0;
 `;
 
-export const FooterContent = styled.div`
+export const Content = styled.div`
   display: flex;
   justify-content: center;
 

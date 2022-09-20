@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
-export const StyledDailyWeatherContent = styled.section`
+export const DailyWeatherContentStyled = styled.section`
   margin: 0 0 150px 0;
 `;
 
