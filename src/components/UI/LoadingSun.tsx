@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import styled, { keyframes } from 'styled-components/macro';
 
 import ImgContainer from './ImgContainer';
@@ -31,4 +31,4 @@ const LoadingSun: FC<LoadingSunProps> = ({ size }) => {
   );
 };
 
-export default LoadingSun;
+export default memo(LoadingSun);

@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC, memo, ReactNode } from 'react';
 import styled from 'styled-components/macro';
 
 import { BreakPoint } from '../../styles/vars';
@@ -42,4 +42,4 @@ const Title: FC<TitleProps> = ({ children, more }) => {
   );
 };
 
-export default Title;
+export default memo(Title);

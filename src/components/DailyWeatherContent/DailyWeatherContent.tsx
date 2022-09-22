@@ -1,5 +1,5 @@
 import { skipToken } from '@reduxjs/toolkit/dist/query';
-import { FC, Fragment } from 'react';
+import { FC } from 'react';
 
 import { DailyWeatherList, DailyWeatherContentStyled } from './DailyWeatherContent.styled';
 
@@ -14,30 +14,40 @@ import Pagination from '../UI/Pagination';
 import Title from '../UI/Title';
 
 const DailyWeatherContent: FC = () => {
-  const coord = useCoord();
+  const { data: coord, isLoading: isLoadCoord, isSuccess: isSuccCoord } = useCoord();
 
-  const { data: dailyForecast, isLoading } = useGetDailyForecastQuery(getDailyForecastParams(coord, 16) ?? skipToken);
+  const {
+    data: dailyForecast,
+    isLoading: isLoadDF,
+    isSuccess: isSuccDF,
+  } = useGetDailyForecastQuery(getDailyForecastParams(coord, 16) ?? skipToken);
 
   const { currItems, currPage, itemsPerPage, actions } = usePagination<IDailyWeatherItem>(dailyForecast);
+
+  let content: JSX.Element = <></>;
+
+  if (isLoadCoord || isLoadDF) {
+    content = <LoadingSun size='150px' />;
+  } else if (isSuccCoord && isSuccDF) {
+    content = (
+      <>
+        <DailyWeatherList>
+          {currItems && currItems.map((item) => <DailyWeatherItem key={item.valid_date} item={item} />)}
+        </DailyWeatherList>
+        <Pagination
+          currPage={currPage}
+          items={dailyForecast?.length ?? 0}
+          itemsPerPage={itemsPerPage}
+          actions={actions}
+        />
+      </>
+    );
+  }
 
   return (
     <DailyWeatherContentStyled>
       <Title>Прогноз погоды на 16 дней</Title>
-      {isLoading ? (
-        <LoadingSun size='150px' />
-      ) : (
-        <Fragment>
-          <DailyWeatherList>
-            {currItems && currItems.map((item) => <DailyWeatherItem key={item.valid_date} item={item} />)}
-          </DailyWeatherList>
-          <Pagination
-            currPage={currPage}
-            items={dailyForecast?.length ?? 0}
-            itemsPerPage={itemsPerPage}
-            actions={actions}
-          />
-        </Fragment>
-      )}
+      {content}
     </DailyWeatherContentStyled>
   );
 };

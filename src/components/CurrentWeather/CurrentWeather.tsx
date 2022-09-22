@@ -26,75 +26,91 @@ import LoadingSun from '../UI/LoadingSun';
 import Title from '../UI/Title';
 
 const CurrentWeather: FC = () => {
-  const coord = useCoord();
+  const { data: coord, isLoading: isLoadCoord, isSuccess: isSuccCoord } = useCoord();
 
-  const { data: weather, isLoading: isLoadWeather } = useGetCurrentWeatherQuery(coord ?? skipToken);
+  const {
+    data: weather,
+    isLoading: isLoadWeather,
+    isSuccess: isSuccWeather,
+  } = useGetCurrentWeatherQuery(coord ?? skipToken);
 
-  const { data: airPollution, isLoading: isLoadAP } = useGetCurrentAirPolutionQuery(coord ?? skipToken);
+  const {
+    data: airPollution,
+    isLoading: isLoadAP,
+    isSuccess: isSuccAP,
+  } = useGetCurrentAirPolutionQuery(coord ?? skipToken);
 
-  const { data: date, isLoading: isLoadDate } = useGetDateTimeQuery(coord ?? skipToken);
+  const {
+    data: dateTime,
+    isLoading: isLoadDateTime,
+    isSuccess: isSuccDateTime,
+  } = useGetDateTimeQuery(coord ?? skipToken);
+
+  let content: JSX.Element = <></>;
+
+  if (isLoadCoord || isLoadWeather || isLoadAP || isLoadDateTime) {
+    content = <LoadingSun size='150px' />;
+  } else if (isSuccCoord && isSuccWeather && isSuccAP && isSuccDateTime) {
+    content = (
+      <Content>
+        <Forecast>
+          <Temp>
+            <ImgContainer size='105px' src={weatherConditions(weather?.weather)} />
+            <TempValue>
+              {weather?.temp.toFixed()}
+              <span>°</span>
+            </TempValue>
+          </Temp>
+          <Description>
+            <p>{weather?.weather.description}</p>
+            <p>ощущается как {weather?.app_temp.toFixed()}°</p>
+          </Description>
+        </Forecast>
+        <WeatherDetailsList>
+          <WeatherDetailsItem>
+            <span>Качество воздуха</span>
+            <span>
+              <Icon name='air-pollution' margin='0 2px 0 0' />
+              {airNames.get(airPollution?.main.aqi as AirQualitativeName)}
+            </span>
+          </WeatherDetailsItem>
+          <WeatherDetailsItem>
+            <span>Давление</span>
+            <span>
+              <Icon name='pressure' margin='0 4px 0 0' />
+              {weather?.pres.toFixed()} мбар
+            </span>
+          </WeatherDetailsItem>
+          <WeatherDetailsItem>
+            <span>Влажность</span>
+            <span>
+              <Icon name='humidity' margin='0 2px 0 0' />
+              {weather?.rh.toFixed()} %
+            </span>
+          </WeatherDetailsItem>
+          <WeatherDetailsItem>
+            <span>Ветер</span>
+            <span>
+              <Icon name='wind' margin='0 4px 0 0' />
+              {weather?.wind_spd.toPrecision(2)} м/с
+            </span>
+          </WeatherDetailsItem>
+          <WeatherDetailsItem>
+            <span>Направление</span>
+            <span>
+              <Icon name='wind-direction' margin='0 4px 0 0' />
+              {weather?.wind_cdir}
+            </span>
+          </WeatherDetailsItem>
+        </WeatherDetailsList>
+      </Content>
+    );
+  }
 
   return (
     <CurrentWeatherStyled>
-      <Title more={isLoadDate ? 'Загрузка времени' : toLocalDateTimeStr(date?.date_time)?.slice(0, -3)}>
-        Текущая погода
-      </Title>
-      {isLoadWeather || isLoadAP ? (
-        <LoadingSun size='150px' />
-      ) : (
-        <Content>
-          <Forecast>
-            <Temp>
-              <ImgContainer size='105px' src={weatherConditions(weather?.weather)} />
-              <TempValue>
-                {weather?.temp.toFixed()}
-                <span>°</span>
-              </TempValue>
-            </Temp>
-            <Description>
-              <p>{weather?.weather.description}</p>
-              <p>ощущается как {weather?.app_temp.toFixed()}°</p>
-            </Description>
-          </Forecast>
-          <WeatherDetailsList>
-            <WeatherDetailsItem>
-              <span>Качество воздуха</span>
-              <span>
-                <Icon name='air-pollution' margin='0 2px 0 0' />
-                {airNames.get(airPollution?.main.aqi as AirQualitativeName)}
-              </span>
-            </WeatherDetailsItem>
-            <WeatherDetailsItem>
-              <span>Давление</span>
-              <span>
-                <Icon name='pressure' margin='0 4px 0 0' />
-                {weather?.pres.toFixed()} мбар
-              </span>
-            </WeatherDetailsItem>
-            <WeatherDetailsItem>
-              <span>Влажность</span>
-              <span>
-                <Icon name='humidity' margin='0 2px 0 0' />
-                {weather?.rh.toFixed()} %
-              </span>
-            </WeatherDetailsItem>
-            <WeatherDetailsItem>
-              <span>Ветер</span>
-              <span>
-                <Icon name='wind' margin='0 4px 0 0' />
-                {weather?.wind_spd.toPrecision(2)} м/с
-              </span>
-            </WeatherDetailsItem>
-            <WeatherDetailsItem>
-              <span>Направление</span>
-              <span>
-                <Icon name='wind-direction' margin='0 4px 0 0' />
-                {weather?.wind_cdir}
-              </span>
-            </WeatherDetailsItem>
-          </WeatherDetailsList>
-        </Content>
-      )}
+      <Title more={toLocalDateTimeStr(dateTime?.date_time)?.slice(0, -3)}>Текущая погода</Title>
+      {content}
     </CurrentWeatherStyled>
   );
 };

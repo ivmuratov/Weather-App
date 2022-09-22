@@ -2,10 +2,10 @@ import { useAppSelector } from '../hooks/useAppSelector';
 import ICoordinates from '../models/ICoordinates';
 import { useGetCoordQuery } from '../services/openWeatherMapService';
 
-export const useCoord = (): ICoordinates | undefined => {
+export const useCoord = (): { data: ICoordinates | undefined; isLoading: boolean; isSuccess: boolean } => {
   const { city } = useAppSelector((state) => state.cityReducer);
 
-  const { data } = useGetCoordQuery(city.value);
+  const { data, isLoading, isSuccess } = useGetCoordQuery(city.value);
 
-  return data;
+  return { data, isLoading, isSuccess };
 };

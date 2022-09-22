@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, memo, useMemo } from 'react';
 
 import {
   Date,
@@ -34,18 +34,25 @@ const DailyWeatherItem: FC<DailyWeatherItemProps> = ({ item }) => {
   return (
     <DailyWeatherItemStyled>
       <MainContent>
-        <Info>
-          <Date>
-            <span>{getDay(item.valid_date)}</span>
-            <span>{toLocalDateStr(item.valid_date)?.slice(0, -5)}</span>
-          </Date>
-          <ImgContainer margin='0 10px 0 0' size='65px' src={weatherConditions(item?.weather)} />
-          <MaxMinTemp>
-            <span>{item.max_temp.toFixed()}°</span>
-            <span>/{item.min_temp.toFixed()}°</span>
-          </MaxMinTemp>
-        </Info>
-        <Description>{item.weather.description}</Description>
+        {useMemo(
+          () => (
+            <>
+              <Info>
+                <Date>
+                  <span>{getDay(item.valid_date)}</span>
+                  <span>{toLocalDateStr(item.valid_date)?.slice(0, -5)}</span>
+                </Date>
+                <ImgContainer margin='0 10px 0 0' size='65px' src={weatherConditions(item.weather)} />
+                <MaxMinTemp>
+                  <span>{item.max_temp.toFixed()}°</span>
+                  <span>/{item.min_temp.toFixed()}°</span>
+                </MaxMinTemp>
+              </Info>
+              <Description>{item.weather.description}</Description>
+            </>
+          ),
+          [item],
+        )}
         {openMoreContent ? <UpArrowButton onClick={toggleOpen} /> : <DownArrowButton onClick={toggleOpen} />}
       </MainContent>
       {openMoreContent && (
@@ -125,4 +132,4 @@ const DailyWeatherItem: FC<DailyWeatherItemProps> = ({ item }) => {
   );
 };
 
-export default DailyWeatherItem;
+export default memo(DailyWeatherItem);
