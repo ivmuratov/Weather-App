@@ -12,14 +12,13 @@ import {
   Description,
 } from './CurrentWeather.styled';
 
-import { AirQualitativeName } from '../../constants/enums';
 import { useCoord } from '../../hooks/useCoord';
 import { useGetDateTimeQuery } from '../../services/dateTimeService';
 import { useGetCurrentAirPolutionQuery } from '../../services/openWeatherMapService';
 import { useGetCurrentWeatherQuery } from '../../services/weatherBitService';
-import { airNames } from '../../utils/airPollution';
-import { toLocalDateTimeStr } from '../../utils/date';
-import { weatherConditions } from '../../utils/weather';
+import { getAirQualitativeName } from '../../utils/getAirQualitativeName/getAirQualitativeName';
+import { getWeatherIcon } from '../../utils/getWeatherIcon/getWeatherIcon';
+import { toDateTimeStr } from '../../utils/toDateTimeStr/toDateTimeStr';
 import Icon from '../UI/Icon';
 import ImgContainer from '../UI/ImgContainer';
 import LoadingSun from '../UI/LoadingSun';
@@ -55,7 +54,7 @@ const CurrentWeather: FC = () => {
       <Content>
         <Forecast>
           <Temp>
-            <ImgContainer size='105px' src={weatherConditions(weather?.weather)} />
+            <ImgContainer size='105px' src={getWeatherIcon(weather?.weather)} />
             <TempValue>
               {weather?.temp.toFixed()}
               <span>°</span>
@@ -71,7 +70,7 @@ const CurrentWeather: FC = () => {
             <span>Качество воздуха</span>
             <span>
               <Icon name='air-pollution' margin='0 2px 0 0' />
-              {airNames.get(airPollution?.main.aqi as AirQualitativeName)}
+              {getAirQualitativeName(airPollution.main)}
             </span>
           </WeatherDetailsItem>
           <WeatherDetailsItem>
@@ -109,7 +108,7 @@ const CurrentWeather: FC = () => {
 
   return (
     <CurrentWeatherStyled>
-      <Title more={toLocalDateTimeStr(dateTime?.date_time)?.slice(0, -3)}>Текущая погода</Title>
+      <Title more={toDateTimeStr(dateTime?.date_time, 'dd.mm.yyyy, HH:MM')}>Текущая погода</Title>
       {content}
     </CurrentWeatherStyled>
   );

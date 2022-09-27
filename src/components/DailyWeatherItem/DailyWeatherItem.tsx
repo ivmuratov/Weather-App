@@ -13,8 +13,9 @@ import {
 } from './DailyWeatherItem.styled';
 
 import IDailyWeatherItem from '../../models/IDailyWeatherItem';
-import { getDay, toLocalDateStr } from '../../utils/date';
-import { weatherConditions } from '../../utils/weather';
+import { getDayOfWeek } from '../../utils/getDayOfWeek/getDayOfWeek';
+import { getWeatherIcon } from '../../utils/getWeatherIcon/getWeatherIcon';
+import { toDateTimeStr } from '../../utils/toDateTimeStr/toDateTimeStr';
 import DownArrowButton from '../UI/ArrowButton/DownArrowButton';
 import UpArrowButton from '../UI/ArrowButton/UpArrowButton';
 import Icon from '../UI/Icon';
@@ -39,10 +40,10 @@ const DailyWeatherItem: FC<DailyWeatherItemProps> = ({ item }) => {
             <>
               <Info>
                 <Date>
-                  <span>{getDay(item.valid_date)}</span>
-                  <span>{toLocalDateStr(item.valid_date)?.slice(0, -5)}</span>
+                  <span>{getDayOfWeek(item.valid_date)}</span>
+                  <span>{toDateTimeStr(item.valid_date, 'dd.mm')}</span>
                 </Date>
-                <ImgContainer margin='0 10px 0 0' size='65px' src={weatherConditions(item.weather)} />
+                <ImgContainer margin='0 10px 0 0' size='65px' src={getWeatherIcon(item.weather)} />
                 <MaxMinTemp>
                   <span>{item.max_temp.toFixed()}°</span>
                   <span>/{item.min_temp.toFixed()}°</span>

@@ -5,8 +5,3 @@ export enum AirQualitativeName {
   Poor = 4,
   VeryPoor = 5,
 }
-
-export enum TimeUnit {
-  SECOND,
-  MINUTE,
-}

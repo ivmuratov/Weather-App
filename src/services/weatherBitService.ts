@@ -6,7 +6,7 @@ import DailyWeatherResp from '../models/DailyWeatherResp';
 import ICoordinates from '../models/ICoordinates';
 import ICurrentWeather from '../models/ICurrentWeather';
 import IDailyWeatherItem from '../models/IDailyWeatherItem';
-import IDailyWeatherParams from '../types/IDailyWeatherParams';
+import IDailyWeatherListParams from '../types/IDailyWeatherListParams';
 
 export const weatherBitApi = createApi({
   reducerPath: 'weatherBitApi',
@@ -24,7 +24,7 @@ export const weatherBitApi = createApi({
       }),
       transformResponse: (response: CurrentWeatherResp) => response.data[0],
     }),
-    getDailyForecast: build.query<IDailyWeatherItem[], IDailyWeatherParams>({
+    getDailyWeatherList: build.query<IDailyWeatherItem[], IDailyWeatherListParams>({
       query: ({ lat, lon, days }) => ({
         url: `forecast/daily?&key=${API_KEY2}&lang=ru`,
         params: {
@@ -38,4 +38,4 @@ export const weatherBitApi = createApi({
   }),
 });
 
-export const { useGetCurrentWeatherQuery, useGetDailyForecastQuery } = weatherBitApi;
+export const { useGetCurrentWeatherQuery, useGetDailyWeatherListQuery } = weatherBitApi;

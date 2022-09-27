@@ -19,7 +19,8 @@ export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(openWeatherMapApi.middleware, weatherBitApi.middleware, dateTimeApi.middleware),
+      getDefaultMiddleware().concat([openWeatherMapApi.middleware, weatherBitApi.middleware, dateTimeApi.middleware]),
+    devTools: process.env.NODE_ENV !== 'production',
   });
 };
 

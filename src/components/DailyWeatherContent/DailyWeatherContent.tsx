@@ -6,8 +6,8 @@ import { DailyWeatherList, DailyWeatherContentStyled } from './DailyWeatherConte
 import { useCoord } from '../../hooks/useCoord';
 import { usePagination } from '../../hooks/usePagination';
 import IDailyWeatherItem from '../../models/IDailyWeatherItem';
-import { useGetDailyForecastQuery } from '../../services/weatherBitService';
-import { getDailyForecastParams } from '../../utils/weather';
+import { useGetDailyWeatherListQuery } from '../../services/weatherBitService';
+import { getDailyWeatherListParams } from '../../utils/getDailyWeatherListParams/getDailyWeatherListParams';
 import DailyWeatherItem from '../DailyWeatherItem/DailyWeatherItem';
 import LoadingSun from '../UI/LoadingSun';
 import Pagination from '../UI/Pagination';
@@ -17,12 +17,12 @@ const DailyWeatherContent: FC = () => {
   const { data: coord, isLoading: isLoadCoord, isSuccess: isSuccCoord } = useCoord();
 
   const {
-    data: dailyForecast,
+    data: dailyWeatherList,
     isLoading: isLoadDF,
     isSuccess: isSuccDF,
-  } = useGetDailyForecastQuery(getDailyForecastParams(coord, 16) ?? skipToken);
+  } = useGetDailyWeatherListQuery(getDailyWeatherListParams(coord, 16) ?? skipToken);
 
-  const { currItems, currPage, itemsPerPage, actions } = usePagination<IDailyWeatherItem>(dailyForecast);
+  const { currItems, currPage, itemsPerPage, actions } = usePagination<IDailyWeatherItem>(dailyWeatherList);
 
   let content: JSX.Element = <></>;
 
@@ -36,7 +36,7 @@ const DailyWeatherContent: FC = () => {
         </DailyWeatherList>
         <Pagination
           currPage={currPage}
-          items={dailyForecast?.length ?? 0}
+          items={dailyWeatherList?.length ?? 0}
           itemsPerPage={itemsPerPage}
           actions={actions}
         />
