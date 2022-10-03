@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components/macro';
 
 import ImgContainer from './ImgContainer';
 
-import sunny from '../../imgs/clouds/sunny.svg';
+import sunny from '../../assets/weather-icons/clouds/sunny.svg';
 
 const animate = keyframes`
   0% {

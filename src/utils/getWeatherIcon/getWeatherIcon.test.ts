@@ -1,15 +1,15 @@
 import { getWeatherIcon } from './getWeatherIcon';
 
-import atmosphere from '../../imgs/atmosphere/atmosphere.svg';
-import clearCloudy from '../../imgs/clouds/clear-cloudy.svg';
-import cloudy from '../../imgs/clouds/cloudy.svg';
-import mostlyCloudy from '../../imgs/clouds/mostly-cloudy.svg';
-import partlyCloudy from '../../imgs/clouds/partly-cloudy.svg';
-import sunny from '../../imgs/clouds/sunny.svg';
-import drizzle from '../../imgs/drizzle/drizzle.svg';
-import rain from '../../imgs/rain/rain.svg';
-import snow from '../../imgs/snow/snow.svg';
-import thunderstorm from '../../imgs/thunderstorm/thunderstorm.svg';
+import atmosphere from '../../assets/weather-icons/atmosphere/atmosphere.svg';
+import clearCloudy from '../../assets/weather-icons/clouds/clear-cloudy.svg';
+import cloudy from '../../assets/weather-icons/clouds/cloudy.svg';
+import mostlyCloudy from '../../assets/weather-icons/clouds/mostly-cloudy.svg';
+import partlyCloudy from '../../assets/weather-icons/clouds/partly-cloudy.svg';
+import sunny from '../../assets/weather-icons/clouds/sunny.svg';
+import drizzle from '../../assets/weather-icons/drizzle/drizzle.svg';
+import rain from '../../assets/weather-icons/rain/rain.svg';
+import snow from '../../assets/weather-icons/snow/snow.svg';
+import thunderstorm from '../../assets/weather-icons/thunderstorm/thunderstorm.svg';
 
 describe('получить иконку погоды', () => {
   test('корректное значение - иконка с грозой (код 200)', () => {

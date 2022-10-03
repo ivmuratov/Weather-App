@@ -4,8 +4,8 @@ import { Content, HeaderStyled } from './Header.styled';
 
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
-import { citySlice } from '../../store/reducers/citySlice';
-import { themeSlice } from '../../store/reducers/themeSlice';
+import { citySlice } from '../../store/reducers/cityReducer/cityReducer';
+import { themeSlice } from '../../store/reducers/themeReducer/themeReducer';
 
 import { lightTheme } from '../../styles/theme';
 import IDropdownItem from '../../types/IDropdownItem';

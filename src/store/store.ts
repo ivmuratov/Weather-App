@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import cityReducer from './reducers/citySlice';
-import themeReducer from './reducers/themeSlice';
+import cityReducer from './reducers/cityReducer/cityReducer';
+import themeReducer from './reducers/themeReducer/themeReducer';
 
 import { dateTimeApi } from '../services/dateTimeService';
 import { openWeatherMapApi } from '../services/openWeatherMapService';

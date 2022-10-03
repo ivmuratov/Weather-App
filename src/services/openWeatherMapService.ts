@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { API_KEY } from '../constants/api';
+import { ApiKey, ApiUrl } from '../constants/api';
 import AirPollutionResp from '../models/AirPollutionResp';
 import CoordinatesResp from '../models/CoordinatesResp';
 import IAirPollution from '../models/IAirPollution';
@@ -9,12 +9,12 @@ import ICoordinates from '../models/ICoordinates';
 export const openWeatherMapApi = createApi({
   reducerPath: 'openWeatherMapApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://api.openweathermap.org/',
+    baseUrl: ApiUrl.OPEN_WEATHER_MAP,
   }),
   endpoints: (build) => ({
     getCoord: build.query<ICoordinates, string>({
       query: (city) => ({
-        url: `geo/1.0/direct?&appid=${API_KEY}`,
+        url: `geo/1.0/direct?&appid=${ApiKey.OPEN_WEATHER_MAP}`,
         params: {
           q: city,
         },
@@ -29,7 +29,7 @@ export const openWeatherMapApi = createApi({
     }),
     getCurrentAirPolution: build.query<IAirPollution, ICoordinates>({
       query: ({ lat, lon }) => ({
-        url: `data/2.5/air_pollution?&appid=${API_KEY}`,
+        url: `data/2.5/air_pollution?&appid=${ApiKey.OPEN_WEATHER_MAP}`,
         params: {
           lat,
           lon,

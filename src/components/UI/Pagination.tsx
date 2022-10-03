@@ -50,9 +50,13 @@ const Pagination: FC<PaginationProps> = ({ currPage, items, itemsPerPage, action
     pageNumbers.push(i);
   }
 
+  const firstPage = pageNumbers[0];
+
+  const lastPage = pageNumbers[pageNumbers.length - 1];
+
   return (
     <PaginationStyled>
-      {currPage === pageNumbers[0] ? <LeftArrowButton inactive /> : <LeftArrowButton onClick={actions.prevPage} />}
+      {currPage === firstPage ? <LeftArrowButton inactive /> : <LeftArrowButton onClick={actions.prevPage} />}
       <PageList>
         {pageNumbers.map((number) => (
           <PageNumber key={number} active={currPage === number} onClick={() => actions.paginate(number)}>
@@ -60,11 +64,7 @@ const Pagination: FC<PaginationProps> = ({ currPage, items, itemsPerPage, action
           </PageNumber>
         ))}
       </PageList>
-      {currPage === pageNumbers[pageNumbers.length - 1] ? (
-        <RightArrowButton inactive />
-      ) : (
-        <RightArrowButton onClick={actions.nextPage} />
-      )}
+      {currPage === lastPage ? <RightArrowButton inactive /> : <RightArrowButton onClick={actions.nextPage} />}
     </PaginationStyled>
   );
 };

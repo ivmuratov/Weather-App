@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { API_KEY2 } from '../constants/api';
+import { ApiKey, ApiUrl } from '../constants/api';
 import CurrentWeatherResp from '../models/CurrentWeatherResp';
 import DailyWeatherResp from '../models/DailyWeatherResp';
 import ICoordinates from '../models/ICoordinates';
@@ -11,12 +11,12 @@ import IDailyWeatherListParams from '../types/IDailyWeatherListParams';
 export const weatherBitApi = createApi({
   reducerPath: 'weatherBitApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://api.weatherbit.io/v2.0/',
+    baseUrl: ApiUrl.WEATHER_BIT,
   }),
   endpoints: (build) => ({
     getCurrentWeather: build.query<ICurrentWeather, ICoordinates>({
       query: ({ lat, lon }) => ({
-        url: `current?key=${API_KEY2}&lang=ru`,
+        url: `current?key=${ApiKey.WEATHER_BIT}&lang=ru`,
         params: {
           lat,
           lon,
@@ -26,7 +26,7 @@ export const weatherBitApi = createApi({
     }),
     getDailyWeatherList: build.query<IDailyWeatherItem[], IDailyWeatherListParams>({
       query: ({ lat, lon, days }) => ({
-        url: `forecast/daily?&key=${API_KEY2}&lang=ru`,
+        url: `forecast/daily?&key=${ApiKey.WEATHER_BIT}&lang=ru`,
         params: {
           lat,
           lon,

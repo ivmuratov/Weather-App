@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import IDropdownItem from '../../types/IDropdownItem';
+import IDropdownItem from '../../../types/IDropdownItem';
 
-interface CityState {
+export interface CityState {
   city: IDropdownItem;
 }
 
 const initialState: CityState = {
   city: {
-    id: 1,
+    id: 5,
     label: 'Новосибирск',
     value: 'Novosibirsk',
   },

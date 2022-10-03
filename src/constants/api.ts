@@ -1,3 +1,11 @@
-export const API_KEY: string = 'f25c23c7074c1d8af790506501fae6e4';
-export const API_KEY2: string = 'fc84c3c20c774e58b2372b014c82fdce';
-export const API_KEY3: string = 'e284f5f19ffd4199b6c551f822f77536';
+export const ApiKey = {
+  OPEN_WEATHER_MAP: process.env.REACT_APP_OPEN_WEATHER_MAP_API_KEY,
+  WEATHER_BIT: process.env.REACT_APP_WEATHER_BIT_API_KEY,
+  DATE_TIME: process.env.REACT_APP_DATE_TIME_API_KEY,
+} as const;
+
+export const ApiUrl = {
+  OPEN_WEATHER_MAP: process.env.REACT_APP_OPEN_WEATHER_MAP_API_URL,
+  WEATHER_BIT: process.env.REACT_APP_WEATHER_BIT_API_URL,
+  DATE_TIME: process.env.REACT_APP_DATE_TIME_API_URL,
+} as const;

@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DefaultTheme } from 'styled-components';
 
-import { darkTheme, lightTheme } from '../../styles/theme';
+import { darkTheme, lightTheme } from '../../../styles/theme';
 
-interface ThemeState {
+export interface ThemeState {
   theme: DefaultTheme;
 }
 
