@@ -1,5 +1,7 @@
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, ReactNode, useState } from 'react';
 import styled from 'styled-components/macro';
+
+import Icon from './Icon';
 
 import { useModalOpen } from '../../hooks/useModalOpen';
 import IDropdownItem from '../../types/IDropdownItem';
@@ -63,16 +65,16 @@ const DropdownItem = styled.li`
 
 const DropdownStyled = styled.div`
   display: flex;
-  align-items: baseline;
+  align-items: center;
 
   ${SearchInput},
   ${DropdownItem} {
-    width: 200px;
+    width: 160px;
   }
 `;
 
 interface DropdownProps {
-  header?: string;
+  header?: string | ReactNode;
   label: string;
   select: (item: IDropdownItem) => void;
   items: IDropdownItem[];
@@ -116,6 +118,7 @@ const Dropdown: FC<DropdownProps> = ({ header, label, select, items }) => {
           </DropdownList>
         )}
       </Content>
+      {!open && <Icon name='down-arrow' />}
     </DropdownStyled>
   );
 };

@@ -1,6 +1,8 @@
 import { ChangeEvent, FC, MouseEventHandler, useState } from 'react';
 import styled from 'styled-components/macro';
 
+import Icon from './Icon';
+
 const ToggleStyled = styled.label`
   display: flex;
   align-items: center;
@@ -57,6 +59,7 @@ const Toggle: FC<ToggleProps> = ({ onClick }) => {
 
   return (
     <ToggleStyled>
+      {checked ? <Icon name='moon' margin='0 5px 0 0' /> : <Icon name='sun' margin='0 5px 0 0' />}
       <Input type='checkbox' onClick={onClick} onChange={handleChange} checked={checked} />
       <Content />
     </ToggleStyled>

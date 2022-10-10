@@ -46,7 +46,7 @@ const DailyWeatherContent: FC = () => {
 
   return (
     <DailyWeatherContentStyled>
-      <Title>Прогноз погоды на 16 дней</Title>
+      <Title>Прогноз на 16 дней</Title>
       {content}
     </DailyWeatherContentStyled>
   );

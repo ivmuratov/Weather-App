@@ -12,6 +12,7 @@ import IDropdownItem from '../../types/IDropdownItem';
 import Container from '../UI/Container';
 import Dropdown from '../UI/Dropdown';
 
+import Icon from '../UI/Icon';
 import Toggle from '../UI/Toggle';
 
 const items: IDropdownItem[] = [
@@ -43,7 +44,7 @@ const Header: FC = () => {
     <HeaderStyled>
       <Container>
         <Content>
-          <Dropdown header={'Город:'} label={city.label} select={select} items={items} />
+          <Dropdown header={<Icon name='location' />} label={city.label} select={select} items={items} />
           <Toggle onClick={() => dispatch(theme === lightTheme ? toggleOnDark(true) : toggleOnDark(false))} />
         </Content>
       </Container>
