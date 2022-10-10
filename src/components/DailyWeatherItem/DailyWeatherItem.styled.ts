@@ -71,7 +71,6 @@ export const MoreContent = styled.div`
   padding: 20px 10px 10px 10px;
   margin: -8px 0 0 0;
   border-radius: 0 0 10px 10px;
-  z-index: -1;
   box-shadow: ${(props) => props.theme.card.boxShadow};
   animation: ${animate} 0.6s linear;
 
