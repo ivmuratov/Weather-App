@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 import { BreakPoint } from '../../styles/vars';
 
 export const CurrentWeatherStyled = styled.section`
-  margin: 0 0 150px 0;
+  margin: 0 0 80px 0;
 `;
 
 export const Content = styled.div`

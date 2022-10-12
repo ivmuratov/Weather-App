@@ -6,7 +6,7 @@ import { BreakPoint } from '../../styles/vars';
 const TitleStyled = styled.h2`
   display: flex;
   justify-content: space-between;
-  margin: 0 0 30px 0;
+  margin: 0 0 20px 0;
 
   @media (max-width: ${BreakPoint.md2}) {
     align-items: center;
@@ -30,7 +30,7 @@ const TitleStyled = styled.h2`
 
 interface TitleProps {
   children: ReactNode;
-  more?: string;
+  more?: ReactNode | string;
 }
 
 const Title: FC<TitleProps> = ({ children, more }) => {

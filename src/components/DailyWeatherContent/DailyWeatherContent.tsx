@@ -1,5 +1,5 @@
 import { skipToken } from '@reduxjs/toolkit/dist/query';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import { DailyWeatherList, DailyWeatherContentStyled } from './DailyWeatherContent.styled';
 
@@ -12,6 +12,7 @@ import DailyWeatherItem from '../DailyWeatherItem/DailyWeatherItem';
 import LoadingSun from '../UI/LoadingSun';
 import Pagination from '../UI/Pagination';
 import Title from '../UI/Title';
+import Toggle from '../UI/Toggle';
 
 const DailyWeatherContent: FC = () => {
   const { data: coord, isLoading: isLoadCoord, isSuccess: isSuccCoord } = useCoord();
@@ -20,9 +21,11 @@ const DailyWeatherContent: FC = () => {
     data: dailyWeatherList,
     isLoading: isLoadDF,
     isSuccess: isSuccDF,
-  } = useGetDailyWeatherListQuery(getDailyWeatherListParams(coord, 16) ?? skipToken);
+  } = useGetDailyWeatherListQuery(getDailyWeatherListParams(coord, 14) ?? skipToken);
 
   const { currItems, currPage, itemsPerPage, actions } = usePagination<IDailyWeatherItem>(dailyWeatherList);
+
+  const [openAllItems, setOpenAllItems] = useState<boolean>(false);
 
   let content: JSX.Element = <></>;
 
@@ -32,7 +35,8 @@ const DailyWeatherContent: FC = () => {
     content = (
       <>
         <DailyWeatherList>
-          {currItems && currItems.map((item) => <DailyWeatherItem key={item.valid_date} item={item} />)}
+          {currItems &&
+            currItems.map((item) => <DailyWeatherItem key={item.valid_date} item={item} openAll={openAllItems} />)}
         </DailyWeatherList>
         <Pagination
           currPage={currPage}
@@ -46,7 +50,18 @@ const DailyWeatherContent: FC = () => {
 
   return (
     <DailyWeatherContentStyled>
-      <Title>Прогноз на 16 дней</Title>
+      <Title
+        more={
+          <Toggle
+            onClick={() => setOpenAllItems(!openAllItems)}
+            placeholder='подробный'
+            placeholderSize='16px'
+            placeholderIndent='7px'
+          />
+        }
+      >
+        Прогноз на 2 недели
+      </Title>
       {content}
     </DailyWeatherContentStyled>
   );

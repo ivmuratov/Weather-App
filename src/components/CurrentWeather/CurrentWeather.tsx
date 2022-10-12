@@ -16,6 +16,7 @@ import { useCoord } from '../../hooks/useCoord';
 import { useGetDateTimeQuery } from '../../services/dateTimeService';
 import { useGetCurrentAirPolutionQuery } from '../../services/openWeatherMapService';
 import { useGetCurrentWeatherQuery } from '../../services/weatherBitService';
+import { convertToMmHg } from '../../utils/convertToMmHg/convertToMmHg';
 import { getAirQualitativeName } from '../../utils/getAirQualitativeName/getAirQualitativeName';
 import { getWeatherIcon } from '../../utils/getWeatherIcon/getWeatherIcon';
 import { toDateTimeStr } from '../../utils/toDateTimeStr/toDateTimeStr';
@@ -77,7 +78,7 @@ const CurrentWeather: FC = () => {
             <span>Давление</span>
             <span>
               <Icon name='pressure' margin='0 4px 0 0' />
-              {weather?.pres.toFixed()} мбар
+              {convertToMmHg(weather?.pres)} мм рт ст
             </span>
           </WeatherDetailsItem>
           <WeatherDetailsItem>

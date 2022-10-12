@@ -16,6 +16,7 @@ export const MainContent = styled.div`
   align-items: center;
   position: relative;
   border-radius: 10px;
+  background: ${(props) => props.theme.background};
   padding: 10px;
   z-index: 10;
   backdrop-filter: blur(10px);

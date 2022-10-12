@@ -1,12 +1,12 @@
 import { ChangeEvent, FC, ReactNode, useState } from 'react';
 import styled from 'styled-components/macro';
 
-import Icon from './Icon';
-
 import { useModalOpen } from '../../hooks/useModalOpen';
 import IDropdownItem from '../../types/IDropdownItem';
 
-const Header = styled.div``;
+const Header = styled.div`
+  font-size: 24px;
+`;
 
 const Content = styled.div`
   position: relative;
@@ -118,7 +118,6 @@ const Dropdown: FC<DropdownProps> = ({ header, label, select, items }) => {
           </DropdownList>
         )}
       </Content>
-      {!open && <Icon name='down-arrow' />}
     </DropdownStyled>
   );
 };

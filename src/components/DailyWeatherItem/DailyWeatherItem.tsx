@@ -1,4 +1,4 @@
-import { FC, useState, memo, useMemo } from 'react';
+import { FC, useState, memo, useMemo, useEffect } from 'react';
 
 import {
   Date,
@@ -13,6 +13,7 @@ import {
 } from './DailyWeatherItem.styled';
 
 import IDailyWeatherItem from '../../models/IDailyWeatherItem';
+import { convertToMmHg } from '../../utils/convertToMmHg/convertToMmHg';
 import { getDayOfWeek } from '../../utils/getDayOfWeek/getDayOfWeek';
 import { getWeatherIcon } from '../../utils/getWeatherIcon/getWeatherIcon';
 import { toDateTimeStr } from '../../utils/toDateTimeStr/toDateTimeStr';
@@ -23,10 +24,19 @@ import ImgContainer from '../UI/ImgContainer';
 
 interface DailyWeatherItemProps {
   item: IDailyWeatherItem;
+  openAll: boolean;
 }
 
-const DailyWeatherItem: FC<DailyWeatherItemProps> = ({ item }) => {
+const DailyWeatherItem: FC<DailyWeatherItemProps> = ({ item, openAll }) => {
   const [openMoreContent, setOpenMoreContent] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (openAll === true) {
+      setOpenMoreContent(true);
+    } else {
+      setOpenMoreContent(false);
+    }
+  }, [openAll]);
 
   const toggleOpen = () => {
     setOpenMoreContent(!openMoreContent);
@@ -63,7 +73,7 @@ const DailyWeatherItem: FC<DailyWeatherItemProps> = ({ item }) => {
               <span>Давление</span>
               <span>
                 <Icon name='pressure' margin='0 4px 0 0' />
-                {item.pres.toFixed()} мбар
+                {convertToMmHg(item.pres)} мм рт ст
               </span>
             </WeatherDetailsItem>
             <WeatherDetailsItem>

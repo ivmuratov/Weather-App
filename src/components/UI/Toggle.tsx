@@ -1,12 +1,22 @@
-import { ChangeEvent, FC, MouseEventHandler, useState } from 'react';
+import { ChangeEvent, FC, MouseEventHandler, ReactNode, useState } from 'react';
 import styled from 'styled-components/macro';
-
-import Icon from './Icon';
 
 const ToggleStyled = styled.label`
   display: flex;
   align-items: center;
   cursor: pointer;
+`;
+
+interface PlaceholderProps {
+  fontSize?: string;
+  indent?: string;
+}
+
+const Placeholder = styled.div<PlaceholderProps>`
+  display: flex;
+  align-items: center;
+  font-size: ${({ fontSize }) => fontSize};
+  margin-right: ${({ indent }) => indent};
 `;
 
 const Content = styled.div`
@@ -48,9 +58,12 @@ const Input = styled.input`
 
 interface ToggleProps {
   onClick: MouseEventHandler;
+  placeholder?: ReactNode | string;
+  placeholderSize?: string;
+  placeholderIndent?: string;
 }
 
-const Toggle: FC<ToggleProps> = ({ onClick }) => {
+const Toggle: FC<ToggleProps> = ({ onClick, placeholder, placeholderSize, placeholderIndent }) => {
   const [checked, setChecked] = useState<boolean>(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -59,7 +72,9 @@ const Toggle: FC<ToggleProps> = ({ onClick }) => {
 
   return (
     <ToggleStyled>
-      {checked ? <Icon name='moon' margin='0 5px 0 0' /> : <Icon name='sun' margin='0 5px 0 0' />}
+      <Placeholder fontSize={placeholderSize} indent={placeholderIndent}>
+        {placeholder}
+      </Placeholder>
       <Input type='checkbox' onClick={onClick} onChange={handleChange} checked={checked} />
       <Content />
     </ToggleStyled>

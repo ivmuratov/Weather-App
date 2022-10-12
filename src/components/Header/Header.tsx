@@ -45,7 +45,11 @@ const Header: FC = () => {
       <Container>
         <Content>
           <Dropdown header={<Icon name='location' />} label={city.label} select={select} items={items} />
-          <Toggle onClick={() => dispatch(theme === lightTheme ? toggleOnDark(true) : toggleOnDark(false))} />
+          <Toggle
+            onClick={() => dispatch(theme === lightTheme ? toggleOnDark(true) : toggleOnDark(false))}
+            placeholder={<Icon name='moon' margin='0 5px 0 0' />}
+            placeholderSize='24px'
+          />
         </Content>
       </Container>
     </HeaderStyled>

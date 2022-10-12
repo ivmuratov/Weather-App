@@ -23,7 +23,7 @@ const AbstractArrowButton = styled.div`
   position: relative;
 
   &:hover {
-    box-shadow: ${(props) => props.theme.button.boxShadow};
+    box-shadow: ${(props) => props.theme.arrowButton.boxShadow};
     opacity: 0.8;
     transition: box-shadow 0.5s ease, opacity 0.5s ease;
   }
