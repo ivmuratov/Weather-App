@@ -4,6 +4,7 @@ import IPageActions from '../types/IPageActions';
 
 export const usePagination = <T extends {}>(
   totalItems: T[] | undefined,
+  itemsPerPage: number,
 ): {
   currItems: T[] | undefined;
   currPage: number;
@@ -11,8 +12,6 @@ export const usePagination = <T extends {}>(
   actions: IPageActions;
 } => {
   const [currPage, setCurrPage] = useState<number>(1);
-
-  const itemsPerPage: number = 7;
 
   const lastItemIndex = currPage * itemsPerPage;
 
