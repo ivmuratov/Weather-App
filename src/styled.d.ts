@@ -10,5 +10,8 @@ declare module 'styled-components' {
     card: {
       boxShadow: string;
     };
+    link: {
+      hoverColor: string;
+    };
   }
 }

@@ -16,11 +16,11 @@ export const MainContent = styled.div`
   align-items: center;
   position: relative;
   border-radius: 10px;
-  background: ${(props) => props.theme.background};
+  background: ${({ theme }) => theme.background};
   padding: 10px;
   z-index: 10;
   backdrop-filter: blur(10px);
-  box-shadow: ${(props) => props.theme.card.boxShadow};
+  box-shadow: ${({ theme }) => theme.card.boxShadow};
 `;
 
 export const Info = styled.div`
@@ -72,7 +72,7 @@ export const MoreContent = styled.div`
   padding: 20px 10px 10px 10px;
   margin: -8px 0 0 0;
   border-radius: 0 0 10px 10px;
-  box-shadow: ${(props) => props.theme.card.boxShadow};
+  box-shadow: ${({ theme }) => theme.card.boxShadow};
   animation: ${animate} 0.6s linear;
 
   @media (max-width: ${BreakPoint.md1}) {

@@ -3,7 +3,7 @@
     [
       "stylelint-processor-styled-components",
       {
-        "moduleName": "styled-components",
+        "moduleName": "styled-components/macro",
         "importName": "default",
         "strict": false,
         "ignoreFiles": [],

@@ -23,7 +23,7 @@ const AbstractArrowButton = styled.div`
   position: relative;
 
   &:hover {
-    box-shadow: ${(props) => props.theme.arrowButton.boxShadow};
+    box-shadow: ${({ theme }) => theme.arrowButton.boxShadow};
     opacity: 0.8;
     transition: box-shadow 0.5s ease, opacity 0.5s ease;
   }
@@ -32,7 +32,7 @@ const AbstractArrowButton = styled.div`
   &::after {
     content: '';
     border: 2px solid currentColor;
-    background-color: ${(props) => props.theme.color};
+    background-color: ${({ theme }) => theme.color};
     display: block;
     height: 15px;
     position: absolute;

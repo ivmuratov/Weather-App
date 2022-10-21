@@ -46,6 +46,7 @@ export const Description = styled.div`
 
 export const WeatherDetailsList = styled.ul`
   display: flex;
+  position: relative;
   flex-direction: column;
   flex: 0 1 auto;
   justify-content: space-between;
@@ -70,3 +71,39 @@ export const WeatherDetailsItem = styled.li`
     margin: 0;
   }
 `;
+
+export namespace AirComp {
+  export const Item = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 0 0 10px 0;
+
+    &:last-child {
+      margin: 0;
+    }
+  `;
+
+  export const Label = styled.div`
+    margin: 0 10px 0 0;
+  `;
+
+  interface ValueProps {
+    color: string;
+  }
+
+  export const Value = styled.div<ValueProps>`
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 5.5px;
+      left: -20px;
+      height: 14px;
+      width: 14px;
+      background: ${({ color }) => color};
+      border-radius: 50%;
+    }
+  `;
+}

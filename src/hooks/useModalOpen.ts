@@ -17,12 +17,25 @@ export const useModalOpen = <T extends Element>(
     }
   };
 
+  const handleESC = (event: KeyboardEvent) => {
+    if (ref.current && event.key === 'Escape') {
+      setOpen(false);
+    }
+  };
+
   useEffect(() => {
     document.addEventListener('click', handleClickOutside, true);
     return () => {
       document.removeEventListener('click', handleClickOutside, false);
     };
-  }, []);
+  }, [open]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleESC, false);
+    return () => {
+      document.removeEventListener('keydown', handleESC, false);
+    };
+  }, [open]);
 
   return { ref, open, setOpen };
 };

@@ -41,8 +41,8 @@ const DropdownList = styled.ul`
   border-radius: 0 0 10px 10px;
   overflow: auto;
   z-index: 100;
-  backdrop-filter: blur(8px);
-  transition: display 0.5s ease;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 
   &::-webkit-scrollbar {
     width: 2px;
@@ -69,7 +69,7 @@ const DropdownStyled = styled.div`
 
   ${SearchInput},
   ${DropdownItem} {
-    width: 160px;
+    width: 200px;
   }
 `;
 

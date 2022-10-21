@@ -10,15 +10,29 @@ export const GlobalStyles = createGlobalStyle`
     min-height: 100vh;
   }
 
+  body {
+    @media (min-width: ${BreakPoint.md1}) {
+      &::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        width: 4px;
+        background-color: #878787;
+      }
+    }    
+  }
+
   ${Wrapper} {
     font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
 	  font-weight: 600;
-    background: ${(props) => props.theme.background} no-repeat 0 0 fixed;
-    color: ${(props) => props.theme.color};  
+    background: ${({ theme }) => theme.background} no-repeat 0 0 fixed;
+    color: ${({ theme }) => theme.color};  
     transition: background 0.5s linear, color 0.5s linear;
 
     @media (max-width: ${BreakPoint.md2}) {
-      background-size: 110% 110%;
+      background-size: 125% 125%;
     }
   }
 `;

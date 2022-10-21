@@ -9,6 +9,9 @@ export const lightTheme: DefaultTheme = {
   card: {
     boxShadow: '0px 0px 20px -7px rgba(0, 0, 0, 0.5)',
   },
+  link: {
+    hoverColor: '#D2691E',
+  },
 };
 
 export const darkTheme: DefaultTheme = {
@@ -19,5 +22,8 @@ export const darkTheme: DefaultTheme = {
   },
   card: {
     boxShadow: '0px 0px 20px -7px rgba(193, 193, 193, 0.5)',
+  },
+  link: {
+    hoverColor: '#00ff7f',
   },
 };

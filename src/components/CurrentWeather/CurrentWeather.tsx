@@ -1,5 +1,5 @@
 import { skipToken } from '@reduxjs/toolkit/dist/query';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import {
   Forecast,
@@ -10,20 +10,25 @@ import {
   WeatherDetailsList,
   Temp,
   Description,
+  AirComp,
 } from './CurrentWeather.styled';
 
 import { useCoord } from '../../hooks/useCoord';
+import { useModalOpen } from '../../hooks/useModalOpen';
 import { useGetDateTimeQuery } from '../../services/dateTimeService';
 import { useGetCurrentAirPolutionQuery } from '../../services/openWeatherMapService';
 import { useGetCurrentWeatherQuery } from '../../services/weatherBitService';
 import { convertToMmHg } from '../../utils/convertToMmHg/convertToMmHg';
+import { getAirPollColorIndicate } from '../../utils/getAirPollColorIndicate/getAirPollColorIndicate';
 import { getAirQualitativeName } from '../../utils/getAirQualitativeName/getAirQualitativeName';
 import { getWeatherIcon } from '../../utils/getWeatherIcon/getWeatherIcon';
 import { toDateTimeStr } from '../../utils/toDateTimeStr/toDateTimeStr';
 import Icon from '../UI/Icon';
 import ImgContainer from '../UI/ImgContainer';
+import Link from '../UI/Link';
 import LoadingSun from '../UI/LoadingSun';
 import Title from '../UI/Title';
+import Tooltip from '../UI/Tooltip';
 
 const CurrentWeather: FC = () => {
   const { data: coord, isLoading: isLoadCoord, isSuccess: isSuccCoord } = useCoord();
@@ -45,6 +50,8 @@ const CurrentWeather: FC = () => {
     isLoading: isLoadDateTime,
     isSuccess: isSuccDateTime,
   } = useGetDateTimeQuery(coord ?? skipToken);
+
+  const { ref, open, setOpen } = useModalOpen<HTMLDivElement>(false);
 
   let content: JSX.Element = <></>;
 
@@ -70,8 +77,10 @@ const CurrentWeather: FC = () => {
           <WeatherDetailsItem>
             <span>Качество воздуха</span>
             <span>
-              <Icon name='air-pollution' margin='0 2px 0 0' />
-              {getAirQualitativeName(airPollution.main)}
+              <Link onClick={() => setOpen(true)}>
+                <Icon name='air-pollution' />
+                {getAirQualitativeName(airPollution.main)}
+              </Link>
             </span>
           </WeatherDetailsItem>
           <WeatherDetailsItem>
@@ -102,6 +111,46 @@ const CurrentWeather: FC = () => {
               {weather?.wind_cdir}
             </span>
           </WeatherDetailsItem>
+          <Tooltip header={'Загрязняющие вещества'} isShow={open} refObj={ref} minWidth='375px'>
+            <AirComp.Item>
+              <AirComp.Label>Угарный газ CO</AirComp.Label>
+              <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'CO')}>
+                {airPollution.components.co} μg/m<sup>3</sup>
+              </AirComp.Value>
+            </AirComp.Item>
+            <AirComp.Item>
+              <AirComp.Label>
+                Двуокись азота NO<sub>2</sub>
+              </AirComp.Label>
+              <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'NO2')}>
+                {airPollution.components.no2} μg/m<sup>3</sup>
+              </AirComp.Value>
+            </AirComp.Item>
+            <AirComp.Item>
+              <AirComp.Label>
+                Диоксид серы SO<sub>2</sub>
+              </AirComp.Label>
+              <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'SO2')}>
+                {airPollution.components.so2} μg/m<sup>3</sup>
+              </AirComp.Value>
+            </AirComp.Item>
+            <AirComp.Item>
+              <AirComp.Label>
+                Мелкие частицы PM<sub>2.5</sub>
+              </AirComp.Label>
+              <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'PM2.5')}>
+                {airPollution.components.pm2_5} μg/m<sup>3</sup>
+              </AirComp.Value>
+            </AirComp.Item>
+            <AirComp.Item>
+              <AirComp.Label>
+                Взвешенные частицы PM<sub>10</sub>
+              </AirComp.Label>
+              <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'PM10')}>
+                {airPollution.components.pm10} μg/m<sup>3</sup>
+              </AirComp.Value>
+            </AirComp.Item>
+          </Tooltip>
         </WeatherDetailsList>
       </Content>
     );

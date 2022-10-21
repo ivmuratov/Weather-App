@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { Content, FooterStyled } from './Footer.styled';
 
 import Container from '../UI/Container';
+import Link from '../UI/Link';
 
 const Footer: FC = () => {
   return (
@@ -10,12 +11,12 @@ const Footer: FC = () => {
       <Container>
         <Content>
           <p>Данные предоставлены:</p>
-          <a href='https://www.weatherbit.io/api' target='_blank' rel='noopener noreferrer'>
+          <Link href='https://www.weatherbit.io/api' target='_blank' rel='noopener noreferrer' margin='0 7px 0 0'>
             weatherbit.io
-          </a>
-          <a href='https://openweathermap.org/api' target='_blank' rel='noopener noreferrer'>
+          </Link>
+          <Link href='https://openweathermap.org/api' target='_blank' rel='noopener noreferrer'>
             openweathermap.org
-          </a>
+          </Link>
         </Content>
       </Container>
     </FooterStyled>
