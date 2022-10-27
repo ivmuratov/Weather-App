@@ -19,8 +19,8 @@ import { getWeatherIcon } from '../../utils/getWeatherIcon/getWeatherIcon';
 import { toDateTimeStr } from '../../utils/toDateTimeStr/toDateTimeStr';
 import DownArrowButton from '../UI/ArrowButton/DownArrowButton';
 import UpArrowButton from '../UI/ArrowButton/UpArrowButton';
-import Icon from '../UI/Icon';
-import ImgContainer from '../UI/ImgContainer';
+import Icon from '../UI/Icon/Icon';
+import SvgContainer from '../UI/SvgContainer/SvgContainer';
 
 interface DailyWeatherItemProps {
   item: IDailyWeatherItem;
@@ -53,7 +53,7 @@ const DailyWeatherItem: FC<DailyWeatherItemProps> = ({ item, openAll }) => {
                   <span>{getDayOfWeek(item.valid_date)}</span>
                   <span>{toDateTimeStr(item.valid_date, 'dd.mm')}</span>
                 </Date>
-                <ImgContainer margin='0 10px 0 0' size='65px' src={getWeatherIcon(item.weather)} />
+                <SvgContainer margin='0 10px 0 0' size='65px' src={getWeatherIcon(item.weather)} />
                 <MaxMinTemp>
                   <span>{item.max_temp.toFixed()}°</span>
                   <span>/{item.min_temp.toFixed()}°</span>

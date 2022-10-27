@@ -7,9 +7,9 @@ import { useCoord } from '../../hooks/useCoord';
 import { useGetDailyWeatherListQuery } from '../../services/weatherBitService';
 import { getDailyWeatherListParams } from '../../utils/getDailyWeatherListParams/getDailyWeatherListParams';
 import DailyWeatherItem from '../DailyWeatherItem/DailyWeatherItem';
-import LoadingSun from '../UI/LoadingSun';
-import Title from '../UI/Title';
-import Toggle from '../UI/Toggle';
+import LoadingSun from '../UI/LoadingSun/LoadingSun';
+import Title from '../UI/Title/Title';
+import Toggle from '../UI/Toggle/Toggle';
 
 const DailyWeatherContent: FC = () => {
   const { data: coord, isLoading: isLoadCoord, isSuccess: isSuccCoord } = useCoord();

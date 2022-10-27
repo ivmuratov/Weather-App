@@ -1,5 +1,5 @@
 import { skipToken } from '@reduxjs/toolkit/dist/query';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
 import {
   Forecast,
@@ -23,12 +23,12 @@ import { getAirPollColorIndicate } from '../../utils/getAirPollColorIndicate/get
 import { getAirQualitativeName } from '../../utils/getAirQualitativeName/getAirQualitativeName';
 import { getWeatherIcon } from '../../utils/getWeatherIcon/getWeatherIcon';
 import { toDateTimeStr } from '../../utils/toDateTimeStr/toDateTimeStr';
-import Icon from '../UI/Icon';
-import ImgContainer from '../UI/ImgContainer';
-import Link from '../UI/Link';
-import LoadingSun from '../UI/LoadingSun';
-import Title from '../UI/Title';
-import Tooltip from '../UI/Tooltip';
+import Icon from '../UI/Icon/Icon';
+import Link from '../UI/Link/Link';
+import LoadingSun from '../UI/LoadingSun/LoadingSun';
+import SvgContainer from '../UI/SvgContainer/SvgContainer';
+import Title from '../UI/Title/Title';
+import Tooltip from '../UI/Tooltip/Tooltip';
 
 const CurrentWeather: FC = () => {
   const { data: coord, isLoading: isLoadCoord, isSuccess: isSuccCoord } = useCoord();
@@ -62,7 +62,7 @@ const CurrentWeather: FC = () => {
       <Content>
         <Forecast>
           <Temp>
-            <ImgContainer size='105px' src={getWeatherIcon(weather?.weather)} />
+            <SvgContainer size='105px' src={getWeatherIcon(weather?.weather)} />
             <TempValue>
               {weather?.temp.toFixed()}
               <span>°</span>
@@ -111,7 +111,13 @@ const CurrentWeather: FC = () => {
               {weather?.wind_cdir}
             </span>
           </WeatherDetailsItem>
-          <Tooltip header={'Загрязняющие вещества'} isShow={open} refObj={ref} minWidth='375px'>
+          <Tooltip
+            header={'Загрязняющие вещества'}
+            isShow={open}
+            refObj={ref}
+            position={{ top: '20px', left: '-125px' }}
+            minWidth='375px'
+          >
             <AirComp.Item>
               <AirComp.Label>Угарный газ CO</AirComp.Label>
               <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'CO')}>
@@ -120,7 +126,7 @@ const CurrentWeather: FC = () => {
             </AirComp.Item>
             <AirComp.Item>
               <AirComp.Label>
-                Двуокись азота NO<sub>2</sub>
+                Диоксид азота NO<sub>2</sub>
               </AirComp.Label>
               <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'NO2')}>
                 {airPollution.components.no2} μg/m<sup>3</sup>
@@ -144,7 +150,7 @@ const CurrentWeather: FC = () => {
             </AirComp.Item>
             <AirComp.Item>
               <AirComp.Label>
-                Взвешенные частицы PM<sub>10</sub>
+                Крупные частицы PM<sub>10</sub>
               </AirComp.Label>
               <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'PM10')}>
                 {airPollution.components.pm10} μg/m<sup>3</sup>

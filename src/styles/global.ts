@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components/macro';
 
 import { BreakPoint } from './vars';
 
-import Wrapper from '../components/UI/Wrapper';
+import Wrapper from '../components/UI/Wrapper/Wrapper';
 
 export const GlobalStyles = createGlobalStyle`
   html,
@@ -29,10 +29,7 @@ export const GlobalStyles = createGlobalStyle`
 	  font-weight: 600;
     background: ${({ theme }) => theme.background} no-repeat 0 0 fixed;
     color: ${({ theme }) => theme.color};  
-    transition: background 0.5s linear, color 0.5s linear;
-
-    @media (max-width: ${BreakPoint.md2}) {
-      background-size: 125% 125%;
-    }
+    transition: background 0.5s linear, color 0.5s linear;    
+    background-size: 125% 125%;    
   }
 `;

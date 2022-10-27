@@ -1,9 +1,8 @@
-import { FC, memo, ReactNode } from 'react';
 import styled from 'styled-components/macro';
 
-import { BreakPoint } from '../../styles/vars';
+import { BreakPoint } from '../../../styles/vars';
 
-const TitleStyled = styled.h2`
+export const TitleStyled = styled.h2`
   display: flex;
   justify-content: space-between;
   margin: 0 0 20px 0;
@@ -27,19 +26,3 @@ const TitleStyled = styled.h2`
     }
   }
 `;
-
-interface TitleProps {
-  children: ReactNode;
-  more?: ReactNode | string;
-}
-
-const Title: FC<TitleProps> = ({ children, more }) => {
-  return (
-    <TitleStyled>
-      <span>{children}</span>
-      <span>{more}</span>
-    </TitleStyled>
-  );
-};
-
-export default memo(Title);

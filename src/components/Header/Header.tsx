@@ -9,11 +9,11 @@ import { themeSlice } from '../../store/reducers/themeReducer/themeReducer';
 
 import { lightTheme } from '../../styles/theme';
 import IDropdownItem from '../../types/IDropdownItem';
-import Container from '../UI/Container';
-import Dropdown from '../UI/Dropdown';
+import Container from '../UI/Container/Container';
+import Dropdown from '../UI/Dropdown/Dropdown';
 
-import Icon from '../UI/Icon';
-import Toggle from '../UI/Toggle';
+import Icon from '../UI/Icon/Icon';
+import Toggle from '../UI/Toggle/Toggle';
 
 const items: IDropdownItem[] = [
   { id: 1, label: 'Архангельск', value: 'Arkhangelsk' },

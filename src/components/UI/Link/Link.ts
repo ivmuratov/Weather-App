@@ -11,7 +11,7 @@ const Link = styled.a<LinkProps>`
   cursor: pointer;
 
   &:hover {
-    color: ${({ theme }) => theme.link.hoverColor};
+    color: #ff8c00;
   }
 `;
 

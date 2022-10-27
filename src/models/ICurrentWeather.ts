@@ -3,6 +3,9 @@ import IWeather from './IWeather';
 
 type PartDay = 'd' | 'n';
 
+/**
+ * Текущая погода
+ */
 interface ICurrentWeather extends ICoordinates, IWeather {
   /**
    * Часть суток
@@ -13,7 +16,7 @@ interface ICurrentWeather extends ICoordinates, IWeather {
    */
   timezone: string;
   /**
-   * Время последнего наблюдения, ГГГГ-ММ-ДД ЧЧ:ММ
+   * Время последнего наблюдения, yyyy-mm-dd HH:MM
    */
   ob_time: string;
   /**
@@ -33,7 +36,7 @@ interface ICurrentWeather extends ICoordinates, IWeather {
    */
   city_name: string;
   /**
-   * Время восхода солнца (GMT +0), ЧЧ:ММ
+   * Время восхода солнца (GMT +0), HH:MM
    */
   sunrise: string;
   /**
@@ -70,7 +73,7 @@ interface ICurrentWeather extends ICoordinates, IWeather {
    */
   ghi: number;
   /**
-   * Время заката солнца (GMT +0), ЧЧ:ММ
+   * Время заката солнца (GMT +0), HH:MM
    */
   sunset: string;
   /**

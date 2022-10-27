@@ -1,8 +1,11 @@
 import IWeather from './IWeather';
 
+/**
+ * Элемент прогноза погоды по дням
+ */
 interface IDailyWeatherItem extends IWeather {
   /**
-   * Местная дата, на которую действителен прогноз, ГГГГ-ММ-ДД
+   * Местная дата, на которую действителен прогноз, yyyy-mm-dd
    */
   valid_date: string;
   /**

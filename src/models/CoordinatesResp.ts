@@ -30,10 +30,26 @@ type LocalNames = {
   fr: string;
 };
 
+/**
+ * Ответ сервиса о координатах локации
+ */
 interface CoordinatesResp extends ICoordinates {
+  /**
+   * Имя найденной локации
+   */
   name: string;
+  /**
+   * Название найденной локации на разных языках.
+   * Список имён может быть разным для разных локаций
+   */
   local_names: LocalNames;
+  /**
+   * Страна найденной локации
+   */
   country: string;
+  /**
+   * Штат найденной локации
+   */
   state: string;
 }
 

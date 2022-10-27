@@ -1,3 +1,6 @@
+/**
+ * Состояние погоды
+ */
 interface IWeatherConditions {
   /**
    * Иконка погоды

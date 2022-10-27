@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-import { Indent, MaxWidth } from '../../styles/vars';
+import { Indent, MaxWidth } from '../../../styles/vars';
 
 interface ContainerProps {
   maxWidth?: MaxWidth;

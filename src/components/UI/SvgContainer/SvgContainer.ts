@@ -5,7 +5,7 @@ interface ImgContainerProps {
   size?: string;
 }
 
-const ImgContainer = styled.img<ImgContainerProps>`
+const SvgContainer = styled.img<ImgContainerProps>`
   margin: ${({ margin }) => margin};
   ${({ size }) => css`
     width: ${size};
@@ -13,4 +13,4 @@ const ImgContainer = styled.img<ImgContainerProps>`
   `};
 `;
 
-export default ImgContainer;
+export default SvgContainer;

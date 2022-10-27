@@ -1,9 +1,12 @@
 import ICoordinates from './ICoordinates';
 import IDailyWeatherItem from './IDailyWeatherItem';
 
+/**
+ * Ответ сервиса о ежедневной погоде
+ */
 interface DailyWeatherResp extends ICoordinates {
   /**
-   * Список прогнозов погоды
+   * Прогноз погоды по дням
    */
   data: IDailyWeatherItem[];
   /**

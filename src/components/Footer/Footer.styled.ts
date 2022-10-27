@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 
 import { BreakPoint } from '../../styles/vars';
-import Link from '../UI/Link';
+import Link from '../UI/Link/Link';
 
 export const FooterStyled = styled.footer`
   flex: 0 0 auto;

@@ -2,8 +2,8 @@ import { FC } from 'react';
 
 import { Content, FooterStyled } from './Footer.styled';
 
-import Container from '../UI/Container';
-import Link from '../UI/Link';
+import Container from '../UI/Container/Container';
+import Link from '../UI/Link/Link';
 
 const Footer: FC = () => {
   return (

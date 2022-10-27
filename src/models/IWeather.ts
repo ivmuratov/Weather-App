@@ -1,9 +1,12 @@
 import IWeatherConditions from './IWeatherConditions';
 
+/**
+ * Погода
+ */
 interface IWeather {
   /**
    * УСТАРЕЛО
-   * Дата действия прогноза, ГГГГ-ММ-ДД:ЧЧ
+   * Дата действия прогноза, yyyГ-mm-dd:HH
    */
   datetime: string;
   /**
