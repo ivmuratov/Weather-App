@@ -31,7 +31,7 @@ const DailyWeatherItem: FC<DailyWeatherItemProps> = ({ item, openAll }) => {
   const [openMoreContent, setOpenMoreContent] = useState<boolean>(false);
 
   useEffect(() => {
-    if (openAll === true) {
+    if (openAll) {
       setOpenMoreContent(true);
     } else {
       setOpenMoreContent(false);

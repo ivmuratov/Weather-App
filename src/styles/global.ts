@@ -11,7 +11,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    @media (min-width: ${BreakPoint.md1}) {
+    @media (min-width: ${BreakPoint.tablet}) {
       &::-webkit-scrollbar {
         width: 4px;
       }

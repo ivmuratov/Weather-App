@@ -26,6 +26,7 @@ export const MainContent = styled.div`
 export const Info = styled.div`
   display: flex;
   align-items: center;
+  flex-basis: 265px;
 `;
 
 export const Date = styled.div`
@@ -38,7 +39,6 @@ export const Date = styled.div`
 export const MaxMinTemp = styled.div`
   display: flex;
   align-items: baseline;
-  margin: 0 10px 0 0;
 
   span:first-child {
     font-size: 42px;
@@ -50,19 +50,19 @@ export const MaxMinTemp = styled.div`
 `;
 
 export const Description = styled.div`
-  @media (max-width: ${BreakPoint.md1}) {
+  @media (max-width: 600px) {
     display: none;
   }
 `;
 
 const animate = keyframes`
-0% {
-  transform: translateY(-85px);
-}
+  0% {
+    transform: translateY(-85px);
+  }
 
-100% {
-  transform: translateY(0);
-}
+  100% {
+    transform: translateY(0);
+  }
 `;
 
 export const MoreContent = styled.div`
@@ -75,7 +75,7 @@ export const MoreContent = styled.div`
   box-shadow: ${({ theme }) => theme.card.boxShadow};
   animation: ${animate} 0.6s linear;
 
-  @media (max-width: ${BreakPoint.md1}) {
+  @media (max-width: ${BreakPoint.tablet}) {
     flex-direction: column;
   }
 `;
@@ -85,7 +85,7 @@ export const WeatherDetailsGroup = styled.div`
   flex-direction: column;
   flex: 0 1 auto;
 
-  @media (max-width: ${BreakPoint.md1}) {
+  @media (max-width: ${BreakPoint.tablet}) {
     border-bottom: 1px solid;
     padding: 8px 0;
 

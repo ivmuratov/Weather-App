@@ -111,53 +111,53 @@ const CurrentWeather: FC = () => {
               {weather?.wind_cdir}
             </span>
           </WeatherDetailsItem>
-          <Tooltip
-            header={'Загрязняющие вещества'}
-            isShow={open}
-            refObj={ref}
-            position={{ top: '20px', left: '-125px' }}
-            minWidth='375px'
-          >
-            <AirComp.Item>
-              <AirComp.Label>Угарный газ CO</AirComp.Label>
-              <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'CO')}>
-                {airPollution.components.co} μg/m<sup>3</sup>
-              </AirComp.Value>
-            </AirComp.Item>
-            <AirComp.Item>
-              <AirComp.Label>
-                Диоксид азота NO<sub>2</sub>
-              </AirComp.Label>
-              <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'NO2')}>
-                {airPollution.components.no2} μg/m<sup>3</sup>
-              </AirComp.Value>
-            </AirComp.Item>
-            <AirComp.Item>
-              <AirComp.Label>
-                Диоксид серы SO<sub>2</sub>
-              </AirComp.Label>
-              <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'SO2')}>
-                {airPollution.components.so2} μg/m<sup>3</sup>
-              </AirComp.Value>
-            </AirComp.Item>
-            <AirComp.Item>
-              <AirComp.Label>
-                Мелкие частицы PM<sub>2.5</sub>
-              </AirComp.Label>
-              <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'PM2.5')}>
-                {airPollution.components.pm2_5} μg/m<sup>3</sup>
-              </AirComp.Value>
-            </AirComp.Item>
-            <AirComp.Item>
-              <AirComp.Label>
-                Крупные частицы PM<sub>10</sub>
-              </AirComp.Label>
-              <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'PM10')}>
-                {airPollution.components.pm10} μg/m<sup>3</sup>
-              </AirComp.Value>
-            </AirComp.Item>
-          </Tooltip>
         </WeatherDetailsList>
+        <Tooltip
+          header={'Загрязняющие вещества'}
+          isShow={open}
+          refObj={ref}
+          position={{ top: '40px', right: '0px' }}
+          minWidth='375px'
+        >
+          <AirComp.Item>
+            <AirComp.Label>Угарный газ CO</AirComp.Label>
+            <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'CO')}>
+              {airPollution.components.co} μg/m<sup>3</sup>
+            </AirComp.Value>
+          </AirComp.Item>
+          <AirComp.Item>
+            <AirComp.Label>
+              Диоксид азота NO<sub>2</sub>
+            </AirComp.Label>
+            <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'NO2')}>
+              {airPollution.components.no2} μg/m<sup>3</sup>
+            </AirComp.Value>
+          </AirComp.Item>
+          <AirComp.Item>
+            <AirComp.Label>
+              Диоксид серы SO<sub>2</sub>
+            </AirComp.Label>
+            <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'SO2')}>
+              {airPollution.components.so2} μg/m<sup>3</sup>
+            </AirComp.Value>
+          </AirComp.Item>
+          <AirComp.Item>
+            <AirComp.Label>
+              Мелкие частицы PM<sub>2.5</sub>
+            </AirComp.Label>
+            <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'PM2.5')}>
+              {airPollution.components.pm2_5} μg/m<sup>3</sup>
+            </AirComp.Value>
+          </AirComp.Item>
+          <AirComp.Item>
+            <AirComp.Label>
+              Крупные частицы PM<sub>10</sub>
+            </AirComp.Label>
+            <AirComp.Value color={getAirPollColorIndicate(airPollution.components, 'PM10')}>
+              {airPollution.components.pm10} μg/m<sup>3</sup>
+            </AirComp.Value>
+          </AirComp.Item>
+        </Tooltip>
       </Content>
     );
   }

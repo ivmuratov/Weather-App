@@ -16,7 +16,7 @@ export const Content = styled.div`
     margin: 0 10px 0 0;
   }
 
-  @media (max-width: ${BreakPoint.md1}) {
+  @media (max-width: ${BreakPoint.tablet}) {
     flex-direction: column;
     align-items: center;
 

@@ -7,7 +7,7 @@ export const TitleStyled = styled.h2`
   justify-content: space-between;
   margin: 0 0 20px 0;
 
-  @media (max-width: ${BreakPoint.md2}) {
+  @media (max-width: ${BreakPoint.mobile}) {
     align-items: center;
     flex-flow: column wrap;
   }
@@ -21,7 +21,7 @@ export const TitleStyled = styled.h2`
     font-size: 24px;
     font-weight: 700;
 
-    @media (max-width: ${BreakPoint.md2}) {
+    @media (max-width: ${BreakPoint.mobile}) {
       font-size: 22px;
     }
   }

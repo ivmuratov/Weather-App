@@ -8,9 +8,10 @@ export const CurrentWeatherStyled = styled.section`
 
 export const Content = styled.div`
   display: flex;
+  position: relative;
   justify-content: space-between;
 
-  @media (max-width: ${BreakPoint.md2}) {
+  @media (max-width: ${BreakPoint.mobile}) {
     align-items: center;
     flex-flow: column wrap;
   }
@@ -21,7 +22,7 @@ export const Forecast = styled.div`
   flex-flow: column wrap;
   margin: 0 30px 0 0;
 
-  @media (max-width: ${BreakPoint.md2}) {
+  @media (max-width: ${BreakPoint.mobile}) {
     margin: 0 0 20px 0;
   }
 `;
@@ -46,12 +47,11 @@ export const Description = styled.div`
 
 export const WeatherDetailsList = styled.ul`
   display: flex;
-  position: relative;
   flex-direction: column;
-  flex: 0 1 auto;
+  flex: 0 1 215px;
   justify-content: space-between;
 
-  @media (max-width: ${BreakPoint.md2}) {
+  @media (max-width: ${BreakPoint.mobile}) {
     display: none;
   }
 `;
@@ -62,6 +62,8 @@ export const WeatherDetailsItem = styled.li`
   margin: 0 0 10px 0;
 
   span {
+    align-self: center;
+
     &:first-child {
       margin: 0 15px 0 0;
     }

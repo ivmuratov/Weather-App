@@ -9,6 +9,6 @@ export enum MaxWidth {
 }
 
 export enum BreakPoint {
-  md1 = '768px',
-  md2 = '480px',
+  tablet = '768px',
+  mobile = '480px',
 }

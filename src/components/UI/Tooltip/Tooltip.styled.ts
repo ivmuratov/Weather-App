@@ -17,6 +17,7 @@ export const Wrapper = styled.div<WrapperProps>`
   ${({ position }) => css`
     top: ${position?.top};
     left: ${position?.left};
+    right: ${position?.right};
   `}
 `;
 
