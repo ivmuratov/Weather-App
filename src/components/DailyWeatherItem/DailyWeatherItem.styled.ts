@@ -33,7 +33,8 @@ export const Date = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 15px 0 0;
+  flex-basis: 45px;
+  margin: 0 5px 0 0;
 `;
 
 export const MaxMinTemp = styled.div`
