@@ -2,10 +2,8 @@ import { FC } from 'react';
 
 import { Content, HeaderStyled } from './Header.styled';
 
-import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useActions } from '../../hooks/useActions';
 import { useAppSelector } from '../../hooks/useAppSelector';
-import { citySlice } from '../../store/reducers/cityReducer/cityReducer';
-import { themeSlice } from '../../store/reducers/themeReducer/themeReducer';
 
 import { lightTheme } from '../../styles/theme';
 import IDropdownItem from '../../types/IDropdownItem';
@@ -30,23 +28,15 @@ const Header: FC = () => {
 
   const { city } = useAppSelector((state) => state.cityReducer);
 
-  const { toggleOnDark } = themeSlice.actions;
-
-  const { selectCity } = citySlice.actions;
-
-  const dispatch = useAppDispatch();
-
-  const select = (item: IDropdownItem) => {
-    dispatch(selectCity(item));
-  };
+  const { toggleOnDark, selectCity } = useActions();
 
   return (
     <HeaderStyled>
       <Container>
         <Content>
-          <Dropdown header={<Icon name='location' />} label={city.label} select={select} items={items} />
+          <Dropdown header={<Icon name='location' />} label={city.label} select={selectCity} items={items} />
           <Toggle
-            onClick={() => dispatch(theme === lightTheme ? toggleOnDark(true) : toggleOnDark(false))}
+            onClick={() => toggleOnDark(theme === lightTheme && true)}
             placeholder={<Icon name='moon' margin='0 5px 0 0' />}
             placeholderSize='24px'
           />

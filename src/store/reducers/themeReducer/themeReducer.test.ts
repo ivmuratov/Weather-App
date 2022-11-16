@@ -1,8 +1,6 @@
-import themeReducer, { themeSlice, ThemeState } from './themeReducer';
+import themeReducer, { ThemeState, toggleOnDark } from './themeReducer';
 
 import { darkTheme, lightTheme } from '../../../styles/theme';
-
-const { toggleOnDark } = themeSlice.actions;
 
 describe('переключить тему', () => {
   test('темная тема', () => {

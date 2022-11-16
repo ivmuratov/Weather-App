@@ -14,7 +14,7 @@ const initialState: CityState = {
   },
 };
 
-export const citySlice = createSlice({
+const citySlice = createSlice({
   name: 'city',
   initialState,
   reducers: {
@@ -23,5 +23,7 @@ export const citySlice = createSlice({
     },
   },
 });
+
+export const { selectCity } = citySlice.actions;
 
 export default citySlice.reducer;

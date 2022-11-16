@@ -1,6 +1,4 @@
-import cityReducer, { citySlice, CityState } from './cityReducer';
-
-const { selectCity } = citySlice.actions;
+import cityReducer, { CityState, selectCity } from './cityReducer';
 
 describe('получить город', () => {
   const initCity: CityState = {
