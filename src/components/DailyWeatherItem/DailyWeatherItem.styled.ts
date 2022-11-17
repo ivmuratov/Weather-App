@@ -1,7 +1,5 @@
 import styled, { keyframes } from 'styled-components/macro';
 
-import { BreakPoint } from '../../styles/vars';
-
 export const DailyWeatherItemStyled = styled.li`
   margin: 0 0 15px 0;
 
@@ -76,7 +74,7 @@ export const MoreContent = styled.div`
   box-shadow: ${({ theme }) => theme.card.boxShadow};
   animation: ${animate} 0.6s linear;
 
-  @media (max-width: ${BreakPoint.tablet}) {
+  @media (max-width: 820px) {
     flex-direction: column;
   }
 `;
@@ -86,7 +84,7 @@ export const WeatherDetailsGroup = styled.div`
   flex-direction: column;
   flex: 0 1 auto;
 
-  @media (max-width: ${BreakPoint.tablet}) {
+  @media (max-width: 820px) {
     border-bottom: 1px solid;
     padding: 8px 0;
 
